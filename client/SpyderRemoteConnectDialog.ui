@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>356</width>
+    <width>357</width>
     <height>354</height>
    </rect>
   </property>
@@ -55,7 +55,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Spyder Host :</string>
+        <string>Remote Spyder Host :</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -78,6 +78,11 @@
        </property>
        <item>
         <property name="text">
+         <string>Gonzalo Peña-Castellanos' Raspberry Pi</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>local</string>
         </property>
        </item>
@@ -89,11 +94,6 @@
        <item>
         <property name="text">
          <string>Ralf's Server</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Gonzalo's Raspberry Pi</string>
         </property>
        </item>
        <item>
@@ -168,7 +168,7 @@
            </size>
           </property>
           <property name="placeholderText">
-           <string>nerohmot</string>
+           <string>goanpeca</string>
           </property>
           <property name="clearButtonEnabled">
            <bool>true</bool>
@@ -321,6 +321,11 @@
             <height>25</height>
            </size>
           </property>
+          <item>
+           <property name="text">
+            <string>sandbox</string>
+           </property>
+          </item>
           <item>
            <property name="text">
             <string>base</string>
