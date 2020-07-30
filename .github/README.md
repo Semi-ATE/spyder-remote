@@ -38,15 +38,10 @@ This is a plugin to `spyder` (>=5), and it adds 2 entries in the `IPython Consol
 
   - `spyder-remote management`
   
-  Here the idea is that one can quickly create/configure a remote environment. Basically I am hoping to add this functionality to the above described Dialog (that is what the two `...` QToolButton's are doing there. In such a case we can get ride of this `spyder-remote management` entry as the funtionality is already in the `spyder-remote console` entry point. Note that if we do things over `requirements` we don't need an elaborate system for this (read: a library with all individual conda commands :stuck_out_tongue:)
+    Here the idea is that one can quickly create/configure a remote environment. Basically I am hoping to add this functionality to the above described Dialog (that is what the two `...` QToolButton's are doing there. In such a case we can get ride of this `spyder-remote management` entry as the funtionality is already in the `spyder-remote console` entry point. Note that if we do things over `requirements` we don't need an elaborate system for this (read: a library with all individual conda commands :stuck_out_tongue:)
   
-  
-  
-This package must work for:
-  - `Windows`
-  - `macOS`
-  - `Linux`
-but there as it is implemented as pure Python (iow: the package is a `noarch` one) that should not be such a big issue.
+This package is to be implemented in pure Python(iow: `noarch`), so bringing it to `Windows`, `macOS` **and** `Linux` will be straight forward.
 
 ## spyder-remote-server
+
 
