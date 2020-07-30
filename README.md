@@ -2,19 +2,49 @@
 
 `spyder-remote` is a system that enables the [spyder IDE (>=5)](https://github.com/spyder-ide/spyder) to connect to a remote machine and work on the remote machine.
 
-This project hold **BOTH** the client- and server-side of the equation.
+This project hold <ins>**BOTH**</ins> the client- and server-side of the equation, however it holds 2 packages :
+  - `spyder-remote-client`
+  
+    This package holds the `spyder` (>=5) plugin that provides the functionality described below.
+  
+  - `spyder-remote-server`
+  
+    This package holds the `spyder-remote-server` command (script) that installs/desinstalls the daemon on the machine.
 
-# Client-side
+# spyder-remote-client
 
-The client-side is a plug-in for spyder (>=5) that adds 2 entries to the console 'hamburger':
-  - `connect to remote `
+Installing `spyder-remote-client` on the client side is done by the straight forward:
+
+```
+(base) me@mybox:~$ conda activate myenv
+(myenv) me@mybox:~$ conda install spyder-remote-client
+```
+
+Note that `spyder-remote-client` depends on `spyder` (>=5), so if spyder is not installed, it **will** be pulled in together with `spyder-remote-client`.
+
+Once `spyder-remote-client` is installed, the plugin will add 2 entries in spyder:
+  - `remote console` ( in the '' hamburger)
   
     blah blah blah
   
-  - `administer remote ...`
+  - `administer remote conda environments` ( in ...)
+  
+    blah blah blah
+  
 
-# Server-side
 
+
+
+# spyder-remote-server
+
+At the remote machine, `spyder-remote-server` **HAS** to be installed in the `base` environment
+
+
+
+```
+(base) me@mybox:~$ conda install spyder-remote-server
+(base) me@mybox:~$ sudo spyder-remote-server --install
+```
 
 
 Plugin for spyder (>=5) that adds remote capabilities to spyder.
