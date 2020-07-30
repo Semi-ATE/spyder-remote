@@ -44,4 +44,23 @@ This package is to be implemented in pure Python(iow: `noarch`), so bringing it 
 
 ## spyder-remote-server
 
+### Installation
 
+The `spyder-remote-server` is simply installed `conda` like so:
+
+```sh
+(base) me@mybox:~$ conda install spyder-remote-server
+(base) me@mybox:~$ sudo spyder-remote-server --install
+```
+Note that `spyder-remote-server` is to be installed in `base` (anything else should fail)
+
+So the `spyder-remote-server` `conda` package installs the `spyder-remote-server` (Python) script.
+This script has the following arguments:
+  - --install ➜ installs the daemon 
+  - --uninstall ➜ uninstalls the daemon
+  - --guest [guest_account] ➜ only to be used with `--install`, and it will also add a guest account to the system (with the same password as the account) and add this info also to the `/etc/spyder-remote.conf` file.
+  - --cores [#] ➜ only to be used with `install`, and it will set the maximum numbers of consoles this machine will provide. (see section on `spyder-remote.conf`)
+
+
+
+### Description
