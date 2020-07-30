@@ -34,11 +34,13 @@ This is a plugin to `spyder` (>=5), and it adds 2 entries in the `IPython Consol
     <img src="/docs/pictures/SpyderRemoteConnectionDialog.png">
   </p>
     
-  In a first stage `Credentials` and `Conda` disabled, and only the `Remote Spyder Host` QComboBox is active, and filled with all 'machines' discovered on the zeroconf network. (Note: we display the pretty names that come from the zeroconf network, it is supposed to be 'talking' names ... in **UTF-8** !) Once a host is selected, the `Credentials` section will enable, proposing the local user name (in our usecase this is :thumbsup:), and by default the password comes from the keyring - placeholer text -) Once that is cleared (by default nothing needs to be done), one can select which `conda` environment for the user on the remote host will be used. This is a QComboBox because we know this info (from the remote host). The Requirements is the finishing touch, if your project (local) has a `requirements` directory in the project root, one can chose whech one (or none) of these to apply to the remote conda environment! :heart_eyes: 
+  In a first stage `Credentials` and `Conda` disabled, and only the `Remote Spyder Host` QComboBox is active, and filled with all 'machines' discovered on the zeroconf network. (Note: we display the pretty names that come from the zeroconf network, it is supposed to be 'talking' names ... in **UTF-8** !) Once a host is selected, the `Credentials` section will enable, proposing the local user name (in our usecase this is :thumbsup:), and by default the password comes from the keyring - placeholer text -) Once that is cleared (by default nothing needs to be done), one can select which `conda` environment for the user on the remote host will be used. This is a QComboBox because we know this info (from the remote host). The Requirements is the finishing touch, if your project (local) has a `requirements` directory in the project root, one can chose whech one (or none) of these to apply to the remote conda environment! :heart_eyes: The `feedback line` guides the user, but there is only very few use-cases for this one (for exemple when the user & password don't allow access to the remote host) Note that the remote host can have a `guest` account set up, in such case we need to be able to tell the user this ... maybe over the feedback line ?!?)
 
   - `spyder-remote management`
   
-  blah blah blah
+  Here the idea is that one can quickly create/configure a remote environment. Basically I am hoping to add this functionality to the above described Dialog (that is what the two `...` QToolButton's are doing there. In such a case we can get ride of this `spyder-remote management` entry as the funtionality is already in the `spyder-remote console` entry point. Note that if we do things over `requirements` we don't need an elaborate system for this (read: a library with all individual conda commands :stuck_out_tongue:)
+  
+  
   
 This package must work for:
   - `Windows`
