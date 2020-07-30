@@ -22,7 +22,9 @@ Note that `spyder-remote-client` depends on `spyder` (>=5), it will pull in also
 
 This is a plugin to `spyder` (>=5), and it adds 2 entries in the ... hamburger:
 
- ![New Ipython Console Hamburger](docs/pictures/IPython_console_hamburger.jpg)
+<p align="center">
+  <img src="/docs/pictures/IPython_console_hamburger.jpg">
+</p>
 
   - `spyder-remote console`
   
