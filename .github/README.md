@@ -28,8 +28,12 @@ This is a plugin to `spyder` (>=5), and it adds 2 entries in the `IPython Consol
 
   - `spyder-remote console`
   
-  Selecting this option will present us with a 
+  Selecting this option will present us with a dialog like this:
   
+  <p align="center">
+    <img src="/docs/pictures/SpyderRemoteConnectionDialog.png">
+  </p>
+    
   - `spyder-remote management`
   
   blah blah blah
