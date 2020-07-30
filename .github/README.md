@@ -20,7 +20,7 @@ Note that `spyder-remote-client` depends on `spyder` (>=5), it will pull in also
 
 ### Description
 
-This is a plugin to `spyder` (>=5), and it adds 2 entries in the ... hamburger:
+This is a plugin to `spyder` (>=5), and it adds 2 entries in the `IPython Console` hamburger:
 
 <p align="center">
   <img src="/docs/pictures/IPython_console_hamburger.jpg">
@@ -28,8 +28,12 @@ This is a plugin to `spyder` (>=5), and it adds 2 entries in the ... hamburger:
 
   - `spyder-remote console`
   
-  blah blah blah
+  Selecting this option will present us with a dialog like this:
   
+  <p align="center">
+    <img src="/docs/pictures/SpyderRemoteConnectionDialog.png">
+  </p>
+    
   - `spyder-remote management`
   
   blah blah blah
