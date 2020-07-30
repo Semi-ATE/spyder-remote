@@ -1,4 +1,22 @@
 # spyder-remote
+
+`spyder-remote` is a system that enables the [spyder IDE (>=5)](https://github.com/spyder-ide/spyder) to connect to a remote machine and work on the remote machine.
+
+This project hold **BOTH** the client- and server-side of the equation.
+
+# Client-side
+
+The client-side is a plug-in for spyder (>=5) that adds 2 entries to the console 'hamburger':
+  - `connect to remote `
+  
+    blah blah blah
+  
+  - `administer remote ...`
+
+# Server-side
+
+
+
 Plugin for spyder (>=5) that adds remote capabilities to spyder.
 
 ## Preample
