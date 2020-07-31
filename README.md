@@ -61,6 +61,9 @@ This script has the following arguments:
   - --guest [guest_account] ➜ only to be used with `--install`, and it will also add a guest account to the system (with the same password as the account) and add this info also to the `/etc/spyder-remote.conf` file.
   - --cores [#] ➜ only to be used with `install`, and it will set the maximum numbers of consoles this machine will provide. (see section on `spyder-remote.conf`)
 
-
-
 ### Description
+
+To begin with we will only implement the spyder-remote-server for Linux. (In a later stage we can add macOS and Windows)
+
+The spyder-remote-server script will install/uninstall the 'publisher' in the systemd of the Linux system. (`/ect/spyder-remote.conf`, `systemctl`), 
+the install script thus need to check if the user is 'root' **and** if the conda  
