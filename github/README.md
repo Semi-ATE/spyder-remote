@@ -1,0 +1,2 @@
+- issue template
+- pr template
