@@ -23,9 +23,9 @@ Is the information correct? [Y/n] y
 nerohmot@RPi4b:~ $
 ```
 
-</details>
-
 TODO: maybe change to a `system` user, but then we need to do some extra steps (/etc/skel, ...)
+
+</details>
 
 2. Switch to the new `conda` user
 
