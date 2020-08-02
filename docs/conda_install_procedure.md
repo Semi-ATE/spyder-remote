@@ -429,3 +429,4 @@ nerohmot@RPi4b:~$ source ~/.bashrc
 (base) nerohmot@RPi4b:~$ 
 ```
 
+Note: because we removed the execution bit for `others`, non-members of the `conda` group can not "accidentally" execute conda.
