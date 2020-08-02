@@ -276,7 +276,10 @@ Password:
 (base) conda@RPi4b:~$
 ```
 
-9. Look where `conda` itself is installed, set the uid bit for `conda` and make a hard link to `/usr/bin`
+9. Look where `conda` itself is installed and:
+  - set the uid bit for `conda`
+  - remove execution bit 'others'
+  - make a hard link to `/usr/bin`
 
 ```sh
 (base) conda@RPi4b:~$ which conda
@@ -285,6 +288,7 @@ Password:
 logout
 nerohmot@RPi4b:~$ sudo chmod u+s /home/conda/forge/bin/conda
 [sudo] password for nerohmot:
+nerohmot@RPi4b:~$ sudo chmod o-x /home/conda/forge/bin/conda
 nerohmot@RPi4b:~$ sudo ln /home/conda/forge/bin/conda /usr/bin/conda
 nerohmot@RPi4b:~$
 ```
@@ -385,7 +389,7 @@ Executing transaction: done
 
 </details>
 
-11. Exit the `conda` user shell and add all users taht will use the `base` installation to the `conda` group.
+11. Exit the `conda` user shell and add all users that will use the `base` installation to the `conda` group.
 
 ```sh
 (base) conda@RPi4b:~$ exit
@@ -425,9 +429,3 @@ nerohmot@RPi4b:~$ source ~/.bashrc
 (base) nerohmot@RPi4b:~$ 
 ```
 
-13. You are done, close and re-open the shell, or resource .bashrc to start using conda
-
-```sh
-nerohmot@RPi4b:~$ source ~/.bashrc
-(base) nerohmot@RPi4b:~$
-```
