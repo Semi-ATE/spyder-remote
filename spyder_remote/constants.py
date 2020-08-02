@@ -7,9 +7,8 @@ Created on Fri Jun 19 14:01:47 2020
 
 import os
 
-zeroconf_type = "_sksd._tcp.local."
+zeroconf_type = "spyder_remote._tcp.local."
 project_root = os.path.dirname(os.path.abspath(__file__))
 
-config_name = "sksd"
-config_file = f"{config_name}.conf"
-config_template = os.path.join(project_root, f"{config_name}.jinja2")
+config_file = "spyder-remote.conf"
+config_template = os.path.join(project_root, "server", config_file)

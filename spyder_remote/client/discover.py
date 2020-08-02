@@ -8,8 +8,8 @@ Created on Tue May 26 23:27:34 2020
 import psutil
 import socket
 
-from utils import str2bool
-from constants import ssd_service_type
+from spyder_remote.utils import str2bool
+from spyder_remote.constants import zeroconf_type
 
 class SpyderListener:
     """This is a listener implemented as according to
@@ -22,20 +22,20 @@ class SpyderListener:
         self.hosts = {}
 
     def remove_service(self, zeroconf, service_type, name):
-        if service_type == ssd_service_type:
+        if service_type == zeroconf_type:
             del self.hosts[name]
             if self.verbose:
                 print(f"removing service type '{service_type}' from '{name}'")
 
     def add_service(self, zeroconf, service_type, name):
-        if service_type == ssd_service_type:
+        if service_type == zeroconf_type:
             info = zeroconf.get_service_info(type, name)
             self.hosts[name] = info
             if self.verbose:
                 print(f"adding service type '{service_type}' from '{name}'")
 
     def update_service(self, zeroconf, service_type, name):
-        if service_type == ssd_service_type:
+        if service_type == zeroconf_type:
             info = zeroconf.get_service_info(service_type, name)
             self.hosts[name] = info
             if self.verbose:
@@ -69,7 +69,6 @@ class SpyderListener:
             retval[host_label]['free_slots'] = int(self.hosts[host].properties[b'free_slots'].decode("utf-8"))
             retval[host_label]['status'] = self.hosts[host].properties[b'status'].decode("utf-8")
         return retval
-    host = info.properties[b'name'].decode("utf-8")
 
 def pp_host(host, info):
     print(host)
@@ -78,17 +77,14 @@ def pp_host(host, info):
     print(f"    guest_account = {info['guest_account']}")
     print(f"    guest_can_manage_environments = {info['guest_can_manage_environments']}")
     print(f"    free_slots = {info['free_slots']}")
-    print(f"    status = {info['status']}")
-    print("")
-
+    print(f"    status = {info['status']}\n")
 
 if __name__ == '__main__':
     from zeroconf import Zeroconf
-    from constants import ssd_service_type
 
     spyderListener = SpyderListener()
     zeroconf = Zeroconf()
-    zeroconf.add_service_listener(ssd_service_type, spyderListener)
+    zeroconf.add_service_listener(zeroconf_type, spyderListener)
 
     try:
         while True:
