@@ -294,7 +294,7 @@ nerohmot@RPi4b:~$
 ```
 
 Notes:
-  - the `conda` user is **NOT** (and shall **NEVER** be) a `sudoer`!
+  - the `conda` user is **NOT** (and shall **NEVER** be) a `sudo-er`!
   - uninstalling means : `sudo deluser --remove-home --remove-all-files conda`
 
 
