@@ -401,7 +401,7 @@ Adding user nerohmot to group conda
 Done.
 nerohmot@RPi4b:~$ sudo adduser goofy conda
 Adding user `goofy' to group `conda' ...
-Adding user foofy to group conda
+Adding user goofy to group conda
 Done.
 nerohmot@RPi4b:~$
 ```
