@@ -1,5 +1,7 @@
 1. On a fresh RPi4b add the user `conda`
 
+<details>
+
 ```sh
 nerohmot@RPi4b:~ $ sudo adduser conda
 Adding user `conda' ...
@@ -20,6 +22,10 @@ Enter the new value, or press ENTER for the default
 Is the information correct? [Y/n] y
 nerohmot@RPi4b:~ $
 ```
+
+</details>
+
+TODO: maybe change to a `system` user, but then we need to do some extra steps (/etc/skel, ...)
 
 2. Switch to the new `conda` user
 
@@ -63,6 +69,8 @@ conda@RPi4b:~$
 
 6. Make the installer executable
 
+<details>
+
 ```sh
 conda@RPi4b:~$ chmod +x Miniforge3-4.8.3-4-Linux-aarch64.sh
 conda@RPi4b:~$ ls -la
@@ -77,7 +85,11 @@ drwxr-xr-x 5 root  root      4096 Jul 27 22:50 ..
 conda@RPi4b:~$ 
 ```
 
-7. Run the installer script
+</details>
+
+7. Run the installer script **with the appropriate prefix!**
+
+<details>
 
 ```sh
 conda@RPi4b:~$ ./Miniforge3-4.8.3-4-Linux-aarch64.sh -p /home/conda/forge
@@ -252,6 +264,8 @@ Thank you for installing Miniforge3!
 conda@RPi4b:~$ 
 ```
 
+</details>
+
 8. Exit the shell and re-enter and verify that the `base` conda environment is active.
 
 ```sh
@@ -262,9 +276,31 @@ Password:
 (base) conda@RPi4b:~$
 ```
 
-9. Install `mamba` in the `base` environment
+9. Look where `conda` itself is installed, set the uid bit for `conda` and make a hard link to `/usr/bin`
 
 ```sh
+(base) conda@RPi4b:~$ which conda
+/home/conda/forge/bin/conda
+(base) conda@RPi4b:~$ exit
+logout
+nerohmot@RPi4b:~$ sudo chmod u+s /home/conda/forge/bin/conda
+[sudo] password for nerohmot:
+nerohmot@RPi4b:~$ sudo ln /home/conda/forge/bin/conda /usr/bin/conda
+nerohmot@RPi4b:~$
+```
+
+Notes:
+  - the `conda` user is **NOT** (and shall **NEVER** be) a `sudoer`!
+  - uninstalling means : `sudo deluser --remove-home --remove-all-files conda`
+
+
+10. Install `mamba` in the `base` environment
+
+<details>
+
+```sh
+nerohmot@RPi4b:~$ su - conda
+Password:
 (base) conda@RPi4b:~$ conda install mamba
 Collecting package metadata (current_repodata.json): done
 Solving environment: done
@@ -347,37 +383,29 @@ Executing transaction: done
 (base) conda@RPi4b:~$ 
 ```
 
-10. Look where `conda` itself is located
+</details>
 
-```sh
-(base) conda@RPi4b:~$ which conda
-/home/conda/forge/bin/conda
-(base) conda@RPi4b:~$ 
-```
-
-11. Exit the `conda` user shell
+11. Exit the `conda` user shell and add all users taht will use the `base` installation to the `conda` group.
 
 ```sh
 (base) conda@RPi4b:~$ exit
 logout
-nerohmot@RPi4b:~$
-```
-
-12. Add users that will use the `base` installation to the `conda` group
-
-```sh
 nerohmot@RPi4b:~$ sudo adduser nerohmot conda
 [sudo] password for nerohmot: 
 Adding user `nerohmot' to group `conda' ...
 Adding user nerohmot to group conda
 Done.
+nerohmot@RPi4b:~$ sudo adduser goofy conda
+Adding user `goofy' to group `conda' ...
+Adding user nerohmot to group conda
+Done.
 nerohmot@RPi4b:~$
 ```
 
-13. The users in the `conda` group can now initialize conda
+12. The users in the `conda` group can now initialize conda (from their path, as `/usr/bin` holda a hardlink to `conda`)
 
 ```sh
-nerohmot@RPi4b:~$ /home/conda/forge/bin/conda init
+nerohmot@RPi4b:~$ conda init
 no change     /home/conda/forge/condabin/conda
 no change     /home/conda/forge/bin/conda
 no change     /home/conda/forge/bin/conda-env
@@ -397,111 +425,9 @@ nerohmot@RPi4b:~$ source ~/.bashrc
 (base) nerohmot@RPi4b:~$ 
 ```
 
-14. close and re-open the shell, or resource .bashrc
+13. You are done, close and re-open the shell, or resource .bashrc to start using conda
 
 ```sh
 nerohmot@RPi4b:~$ source ~/.bashrc
 (base) nerohmot@RPi4b:~$
-```
-
-15. create a new environment
-
-```sh
-(base) nerohmot@RPi4b:~$ conda create -n qt python=3.7
-Collecting package metadata (current_repodata.json): done
-Solving environment: done
-
-## Package Plan ##
-
-  environment location: /home/nerohmot/.conda/envs/qt
-
-  added / updated specs:
-    - python=3.7
-
-
-The following packages will be downloaded:
-
-    package                    |            build
-    ---------------------------|-----------------
-    ca-certificates-2020.6.20  |       hecda079_0         146 KB  conda-forge
-    certifi-2020.6.20          |   py37hc8dfbb8_0         151 KB  conda-forge
-    ld_impl_linux-aarch64-2.34 |       h281f86e_9         613 KB  conda-forge
-    libgcc-ng-7.5.0            |      h8e86211_10         6.0 MB  conda-forge
-    libgomp-7.5.0              |      h8e86211_10         709 KB  conda-forge
-    libstdcxx-ng-7.5.0         |      hca8aa85_10         2.9 MB  conda-forge
-    ncurses-6.2                |       he1b5a44_1        1015 KB  conda-forge
-    python-3.7.8               |haf261e1_0_cpython        13.5 MB  conda-forge
-    readline-8.0               |       h607064a_2         280 KB  conda-forge
-    setuptools-49.2.0          |   py37hc8dfbb8_0         949 KB  conda-forge
-    sqlite-3.32.3              |       h283c62a_1         1.6 MB  conda-forge
-    xz-5.2.5                   |       h6dd45c4_1         357 KB  conda-forge
-    ------------------------------------------------------------
-                                           Total:        28.1 MB
-
-The following NEW packages will be INSTALLED:
-
-  _openmp_mutex      conda-forge/linux-aarch64::_openmp_mutex-4.5-0_gnu
-  ca-certificates    conda-forge/linux-aarch64::ca-certificates-2020.6.20-hecda079_0
-  certifi            conda-forge/linux-aarch64::certifi-2020.6.20-py37hc8dfbb8_0
-  ld_impl_linux-aar~ conda-forge/linux-aarch64::ld_impl_linux-aarch64-2.34-h281f86e_9
-  libffi             conda-forge/linux-aarch64::libffi-3.2.1-h4c5d2ac_1007
-  libgcc-ng          conda-forge/linux-aarch64::libgcc-ng-7.5.0-h8e86211_10
-  libgomp            conda-forge/linux-aarch64::libgomp-7.5.0-h8e86211_10
-  libstdcxx-ng       conda-forge/linux-aarch64::libstdcxx-ng-7.5.0-hca8aa85_10
-  ncurses            conda-forge/linux-aarch64::ncurses-6.2-he1b5a44_1
-  openssl            conda-forge/linux-aarch64::openssl-1.1.1g-h516909a_0
-  pip                conda-forge/noarch::pip-20.1.1-py_1
-  python             conda-forge/linux-aarch64::python-3.7.8-haf261e1_0_cpython
-  python_abi         conda-forge/linux-aarch64::python_abi-3.7-1_cp37m
-  readline           conda-forge/linux-aarch64::readline-8.0-h607064a_2
-  setuptools         conda-forge/linux-aarch64::setuptools-49.2.0-py37hc8dfbb8_0
-  sqlite             conda-forge/linux-aarch64::sqlite-3.32.3-h283c62a_1
-  tk                 conda-forge/linux-aarch64::tk-8.6.10-hed695b0_0
-  wheel              conda-forge/noarch::wheel-0.34.2-py_1
-  xz                 conda-forge/linux-aarch64::xz-5.2.5-h6dd45c4_1
-  zlib               conda-forge/linux-aarch64::zlib-1.2.11-h516909a_1006
-
-
-Proceed ([y]/n)? y
-
-
-Downloading and Extracting Packages
-ncurses-6.2          | 1015 KB   | #################################################### | 100% 
-certifi-2020.6.20    | 151 KB    | #################################################### | 100% 
-setuptools-49.2.0    | 949 KB    | #################################################### | 100% 
-libstdcxx-ng-7.5.0   | 2.9 MB    | #################################################### | 100% 
-libgcc-ng-7.5.0      | 6.0 MB    | #################################################### | 100% 
-ca-certificates-2020 | 146 KB    | #################################################### | 100% 
-xz-5.2.5             | 357 KB    | #################################################### | 100% 
-ld_impl_linux-aarch6 | 613 KB    | #################################################### | 100% 
-sqlite-3.32.3        | 1.6 MB    | #################################################### | 100% 
-readline-8.0         | 280 KB    | #################################################### | 100% 
-python-3.7.8         | 13.5 MB   | #################################################### | 100% 
-libgomp-7.5.0        | 709 KB    | #################################################### | 100% 
-Preparing transaction: done
-Verifying transaction: done
-Executing transaction: done
-#
-# To activate this environment, use
-#
-#     $ conda activate qt
-#
-# To deactivate an active environment, use
-#
-#     $ conda deactivate
-
-(base) nerohmot@RPi4b:~$ 
-```
-
-16. Activate the new environment
-
-```sh
-(base) nerohmot@RPi4b:~$ conda activate qt
-(qt) nerohmot@RPi4b:~$
-```
-
-17. Install `qt` in the new environment
-
-```sh
-
 ```
