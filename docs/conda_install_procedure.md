@@ -276,6 +276,9 @@ Password:
 (base) conda@RPi4b:~$
 ```
 
+TODO. fix permisions in  /home/conda/forge/pkgs/cache (group has no write access to 2 .json files)
+
+
 9. Look where `conda` itself is installed and:
   - set the uid bit for `conda`
   - remove execution bit 'others'
