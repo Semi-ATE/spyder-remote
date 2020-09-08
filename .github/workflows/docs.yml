@@ -1,6 +1,6 @@
 # https://github.com/marketplace/actions/deploy-to-github-pages
 
-name: Build and Deploy
+name: Build and Deploy Docs
 on:
   push:
     branches:

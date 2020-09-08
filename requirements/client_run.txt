@@ -1,3 +1,3 @@
-psutil
 netifaces
+psutil
 zeroconf

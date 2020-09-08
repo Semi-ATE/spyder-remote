@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Run tests
 on: [push]
 jobs:
   build-and-deploy:
@@ -22,7 +22,7 @@ jobs:
         run: |
           pip install pre-commit
           pre-commit run -a
-      - name: Install and run Check manifest
-        run: |
-          pip install check_manifest
-          check_manifest
+      # - name: Install and run Check manifest
+      #   run: |
+      #     pip install check_manifest
+      #     check_manifest
