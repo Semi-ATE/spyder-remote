@@ -11,16 +11,16 @@ Adding new group `conda' (1002) ...
 Adding new user `conda' (1002) with group `conda' ...
 Creating home directory `/home/conda' ...
 Copying files from `/etc/skel' ...
-New password: 
-Retype new password: 
+New password:
+Retype new password:
 passwd: password updated successfully
 Changing the user information for conda
 Enter the new value, or press ENTER for the default
 	Full Name []: conda
-	Room Number []: 
-	Work Phone []: 
-	Home Phone []: 
-	Other []: 
+	Room Number []:
+	Work Phone []:
+	Home Phone []:
+	Other []:
 Is the information correct? [Y/n] y
 nerohmot@RPi4b:~ $
 ```
@@ -33,7 +33,7 @@ TODO: maybe change to a `system` user, but then we need to do some extra steps (
 
 ```sh
 nerohmot@RPi4b:~$ su - conda
-Password: 
+Password:
 conda@RPi4b:~$
 ```
 
@@ -58,7 +58,7 @@ conda@RPi4b:~$ curl -SL https://github.com/conda-forge/miniforge/releases/latest
 100   175  100   175    0     0    629      0 --:--:-- --:--:-- --:--:--   627
 100   655  100   655    0     0   1233      0 --:--:-- --:--:-- --:--:--  1233
 100   104  100   104    0     0     96      0  0:00:01  0:00:01 --:--:--    96
-conda@RPi4b:~$ 
+conda@RPi4b:~$
 ```
 
 5. Check the checksum
@@ -66,7 +66,7 @@ conda@RPi4b:~$
 ```sh
 conda@RPi4b:~$ sha256sum -c Miniforge3-4.8.3-4-Linux-aarch64.sh.sha256 2>&1 | grep OK
 ./Miniforge3-4.8.3-4-Linux-aarch64.sh: OK
-conda@RPi4b:~$ 
+conda@RPi4b:~$
 ```
 
 6. Make the installer executable
@@ -84,7 +84,7 @@ drwxr-xr-x 5 root  root      4096 Jul 27 22:50 ..
 -rw-r--r-- 1 conda conda      807 Jul 27 22:50 .profile
 -rwxrwxr-x 1 conda conda 53550342 Jul 27 22:55 Miniforge3-4.8.3-4-Linux-aarch64.sh
 -rw-rw-r-- 1 conda conda      104 Jul 27 22:56 Miniforge3-4.8.3-4-Linux-aarch64.sh.sha256
-conda@RPi4b:~$ 
+conda@RPi4b:~$
 ```
 
 </details>
@@ -101,7 +101,7 @@ Welcome to Miniforge3 4.8.3-4
 In order to continue the installation process, please review the license
 agreement.
 Please, press ENTER to continue
->>> 
+>>>
 BSD 3-clause license
 Copyright (c) 2019, conda-forge
 All rights reserved.
@@ -142,10 +142,10 @@ Miniforge3 will now be installed into this location:
   - Press CTRL-C to abort the installation
   - Or specify a different location below
 
-[/home/conda/forge] >>> 
+[/home/conda/forge] >>>
 PREFIX=/home/conda/forge
 Unpacking payload ...
-Collecting package metadata (current_repodata.json): done                                                                                                                                                                                                     
+Collecting package metadata (current_repodata.json): done
 Solving environment: done
 
 ## Package Plan ##
@@ -257,13 +257,13 @@ modified      /home/conda/.bashrc
 
 ==> For changes to take effect, close and re-open your current shell. <==
 
-If you'd prefer that conda's base environment not be activated on startup, 
-   set the auto_activate_base parameter to false: 
+If you'd prefer that conda's base environment not be activated on startup,
+   set the auto_activate_base parameter to false:
 
 conda config --set auto_activate_base false
 
 Thank you for installing Miniforge3!
-conda@RPi4b:~$ 
+conda@RPi4b:~$
 ```
 
 </details>
@@ -274,7 +274,7 @@ conda@RPi4b:~$
 conda@RPi4b:~$ exit
 logout
 nerohmot@RPi4b:~$ su - conda
-Password: 
+Password:
 (base) conda@RPi4b:~$
 ```
 
@@ -368,28 +368,28 @@ The following packages will be UPDATED:
 
 Proceed ([y]/n)? y
 
-ncurses-6.2          | 1015 KB   | #################################################### | 100% 
+ncurses-6.2          | 1015 KB   | #################################################### | 100%
 
 Downloading and Extracting Packages
-zstd-1.4.5           | 811 KB    | #################################################### | 100% 
-libarchive-3.3.3     | 1.8 MB    | #################################################### | 100% 
-ca-certificates-2020 | 146 KB    | #################################################### | 100% 
-mamba-0.4.3          | 630 KB    | #################################################### | 100% 
-libxml2-2.9.10       | 1.4 MB    | #################################################### | 100% 
-lz4-c-1.9.2          | 245 KB    | #################################################### | 100% 
-libiconv-1.15        | 2.0 MB    | #################################################### | 100% 
-libedit-3.1.20191231 | 132 KB    | #################################################### | 100% 
-libssh2-1.9.0        | 227 KB    | #################################################### | 100% 
-libcurl-7.71.1       | 321 KB    | #################################################### | 100% 
-certifi-2020.6.20    | 151 KB    | #################################################### | 100% 
-libsolv-0.7.14       | 453 KB    | #################################################### | 100% 
-icu-67.1             | 13.2 MB   | #################################################### | 100% 
-lzo-2.10             | 317 KB    | #################################################### | 100% 
-krb5-1.17.1          | 1.5 MB    | #################################################### | 100% 
+zstd-1.4.5           | 811 KB    | #################################################### | 100%
+libarchive-3.3.3     | 1.8 MB    | #################################################### | 100%
+ca-certificates-2020 | 146 KB    | #################################################### | 100%
+mamba-0.4.3          | 630 KB    | #################################################### | 100%
+libxml2-2.9.10       | 1.4 MB    | #################################################### | 100%
+lz4-c-1.9.2          | 245 KB    | #################################################### | 100%
+libiconv-1.15        | 2.0 MB    | #################################################### | 100%
+libedit-3.1.20191231 | 132 KB    | #################################################### | 100%
+libssh2-1.9.0        | 227 KB    | #################################################### | 100%
+libcurl-7.71.1       | 321 KB    | #################################################### | 100%
+certifi-2020.6.20    | 151 KB    | #################################################### | 100%
+libsolv-0.7.14       | 453 KB    | #################################################### | 100%
+icu-67.1             | 13.2 MB   | #################################################### | 100%
+lzo-2.10             | 317 KB    | #################################################### | 100%
+krb5-1.17.1          | 1.5 MB    | #################################################### | 100%
 Preparing transaction: done
 Verifying transaction: done
 Executing transaction: done
-(base) conda@RPi4b:~$ 
+(base) conda@RPi4b:~$
 ```
 
 </details>
@@ -400,7 +400,7 @@ Executing transaction: done
 (base) conda@RPi4b:~$ exit
 logout
 nerohmot@RPi4b:~$ sudo adduser nerohmot conda
-[sudo] password for nerohmot: 
+[sudo] password for nerohmot:
 Adding user `nerohmot' to group `conda' ...
 Adding user nerohmot to group conda
 Done.
@@ -431,7 +431,7 @@ modified      /home/nerohmot/.bashrc
 ==> For changes to take effect, close and re-open your current shell. <==
 
 nerohmot@RPi4b:~$ source ~/.bashrc
-(base) nerohmot@RPi4b:~$ 
+(base) nerohmot@RPi4b:~$
 ```
 
 Note: because we removed the execution bit for `others` (cfr. 9b), non-members of the `conda` group can not "accidentally" execute conda.
