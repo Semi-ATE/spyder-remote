@@ -1,0 +1,28 @@
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install client dependencies
+        run: |
+          pip install -r requirements/client_run.txt
+      - name: Install server dependencies
+        run: |
+          pip install -r requirements/server_run.txt
+      - name: Install and run Precommit
+        run: |
+          pip install pre-commit
+          pre-commit run -a
+      - name: Install and run Check manifest
+        run: |
+          pip install check_manifest
+          check_manifest
