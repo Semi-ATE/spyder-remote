@@ -1,0 +1,39 @@
+# https://github.com/marketplace/actions/deploy-to-github-pages
+
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'docs/**'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'docs/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements/docs.txt
+      - name: Build Sphinx Site
+        run: |
+          sphinx-build docs docs/build/
+          touch docs/build/.nojekyll
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.5.9
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_BRANCH: master
+          BRANCH: gh-pages
+          FOLDER: docs/build
