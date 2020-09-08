@@ -158,16 +158,16 @@ Adding user <span class="sb">`</span>conda<span class="s1">&#39; ...</span>
 Adding new user <span class="sb">`</span>conda<span class="s1">&#39; (1002) with group `conda&#39;</span> ...
 Creating home directory <span class="sb">`</span>/home/conda<span class="s1">&#39; ...</span>
 <span class="s1">Copying files from `/etc/skel&#39;</span> ...
-New password: 
-Retype new password: 
+New password:
+Retype new password:
 passwd: password updated successfully
 Changing the user information <span class="k">for</span> conda
 Enter the new value, or press ENTER <span class="k">for</span> the default
 	Full Name <span class="o">[]</span>: conda
-	Room Number <span class="o">[]</span>: 
-	Work Phone <span class="o">[]</span>: 
-	Home Phone <span class="o">[]</span>: 
-	Other <span class="o">[]</span>: 
+	Room Number <span class="o">[]</span>:
+	Work Phone <span class="o">[]</span>:
+	Home Phone <span class="o">[]</span>:
+	Other <span class="o">[]</span>:
 Is the information correct? <span class="o">[</span>Y/n<span class="o">]</span> y
 nerohmot@RPi4b:~ $
 </pre></div>
@@ -178,7 +178,7 @@ nerohmot@RPi4b:~ $
 <li><p>Switch to the new <code class="docutils literal notranslate"><span class="pre">conda</span></code> user</p></li>
 </ol>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>nerohmot@RPi4b:~$ su - conda
-Password: 
+Password:
 conda@RPi4b:~$
 </pre></div>
 </div>
@@ -203,7 +203,7 @@ conda@RPi4b:~$
 <span class="m">100</span>   <span class="m">175</span>  <span class="m">100</span>   <span class="m">175</span>    <span class="m">0</span>     <span class="m">0</span>    <span class="m">629</span>      <span class="m">0</span> --:--:-- --:--:-- --:--:--   <span class="m">627</span>
 <span class="m">100</span>   <span class="m">655</span>  <span class="m">100</span>   <span class="m">655</span>    <span class="m">0</span>     <span class="m">0</span>   <span class="m">1233</span>      <span class="m">0</span> --:--:-- --:--:-- --:--:--  <span class="m">1233</span>
 <span class="m">100</span>   <span class="m">104</span>  <span class="m">100</span>   <span class="m">104</span>    <span class="m">0</span>     <span class="m">0</span>     <span class="m">96</span>      <span class="m">0</span>  <span class="m">0</span>:00:01  <span class="m">0</span>:00:01 --:--:--    <span class="m">96</span>
-conda@RPi4b:~$ 
+conda@RPi4b:~$
 </pre></div>
 </div>
 <ol class="simple">
@@ -211,7 +211,7 @@ conda@RPi4b:~$
 </ol>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda@RPi4b:~$ sha256sum -c Miniforge3-4.8.3-4-Linux-aarch64.sh.sha256 <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep OK
 ./Miniforge3-4.8.3-4-Linux-aarch64.sh: OK
-conda@RPi4b:~$ 
+conda@RPi4b:~$
 </pre></div>
 </div>
 <ol class="simple">
@@ -228,7 +228,7 @@ drwxr-xr-x <span class="m">5</span> root  root      <span class="m">4096</span> 
 -rw-r--r-- <span class="m">1</span> conda conda      <span class="m">807</span> Jul <span class="m">27</span> <span class="m">22</span>:50 .profile
 -rwxrwxr-x <span class="m">1</span> conda conda <span class="m">53550342</span> Jul <span class="m">27</span> <span class="m">22</span>:55 Miniforge3-4.8.3-4-Linux-aarch64.sh
 -rw-rw-r-- <span class="m">1</span> conda conda      <span class="m">104</span> Jul <span class="m">27</span> <span class="m">22</span>:56 Miniforge3-4.8.3-4-Linux-aarch64.sh.sha256
-conda@RPi4b:~$ 
+conda@RPi4b:~$
 </pre></div>
 </div>
 </details>
@@ -243,7 +243,7 @@ Welcome to Miniforge3 <span class="m">4</span>.8.3-4
 In order to <span class="k">continue</span> the installation process, please review the license
 agreement.
 Please, press ENTER to <span class="k">continue</span>
-&gt;&gt;&gt; 
+&gt;&gt;&gt;
 BSD <span class="m">3</span>-clause license
 Copyright <span class="o">(</span>c<span class="o">)</span> <span class="m">2019</span>, conda-forge
 All rights reserved.
@@ -284,10 +284,10 @@ Miniforge3 will now be installed into this location:
   - Press CTRL-C to abort the installation
   - Or specify a different location below
 
-<span class="o">[</span>/home/conda/forge<span class="o">]</span> &gt;&gt;&gt; 
+<span class="o">[</span>/home/conda/forge<span class="o">]</span> &gt;&gt;&gt;
 <span class="nv">PREFIX</span><span class="o">=</span>/home/conda/forge
 Unpacking payload ...
-Collecting package metadata <span class="o">(</span>current_repodata.json<span class="o">)</span>: <span class="k">done</span>                                                                                                                                                                                                     
+Collecting package metadata <span class="o">(</span>current_repodata.json<span class="o">)</span>: <span class="k">done</span>
 Solving environment: <span class="k">done</span>
 
 <span class="c1">## Package Plan ##</span>
@@ -399,13 +399,13 @@ modified      /home/conda/.bashrc
 
 <span class="o">==</span>&gt; For changes to take effect, close and re-open your current shell. &lt;<span class="o">==</span>
 
-If you<span class="s1">&#39;d prefer that conda&#39;</span>s base environment not be activated on startup, 
-   <span class="nb">set</span> the auto_activate_base parameter to false: 
+If you<span class="s1">&#39;d prefer that conda&#39;</span>s base environment not be activated on startup,
+   <span class="nb">set</span> the auto_activate_base parameter to false:
 
 conda config --set auto_activate_base <span class="nb">false</span>
 
 Thank you <span class="k">for</span> installing Miniforge3!
-conda@RPi4b:~$ 
+conda@RPi4b:~$
 </pre></div>
 </div>
 </details>
@@ -415,7 +415,7 @@ conda@RPi4b:~$
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda@RPi4b:~$ <span class="nb">exit</span>
 <span class="nb">logout</span>
 nerohmot@RPi4b:~$ su - conda
-Password: 
+Password:
 <span class="o">(</span>base<span class="o">)</span> conda@RPi4b:~$
 </pre></div>
 </div>
@@ -508,28 +508,28 @@ The following packages will be UPDATED:
 
 Proceed <span class="o">([</span>y<span class="o">]</span>/n<span class="o">)</span>? y
 
-ncurses-6.2          <span class="p">|</span> <span class="m">1015</span> KB   <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+ncurses-6.2          <span class="p">|</span> <span class="m">1015</span> KB   <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
 
 Downloading and Extracting Packages
-zstd-1.4.5           <span class="p">|</span> <span class="m">811</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-libarchive-3.3.3     <span class="p">|</span> <span class="m">1</span>.8 MB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-ca-certificates-2020 <span class="p">|</span> <span class="m">146</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-mamba-0.4.3          <span class="p">|</span> <span class="m">630</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-libxml2-2.9.10       <span class="p">|</span> <span class="m">1</span>.4 MB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-lz4-c-1.9.2          <span class="p">|</span> <span class="m">245</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-libiconv-1.15        <span class="p">|</span> <span class="m">2</span>.0 MB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-libedit-3.1.20191231 <span class="p">|</span> <span class="m">132</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-libssh2-1.9.0        <span class="p">|</span> <span class="m">227</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-libcurl-7.71.1       <span class="p">|</span> <span class="m">321</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-certifi-2020.6.20    <span class="p">|</span> <span class="m">151</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-libsolv-0.7.14       <span class="p">|</span> <span class="m">453</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-icu-67.1             <span class="p">|</span> <span class="m">13</span>.2 MB   <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-lzo-2.10             <span class="p">|</span> <span class="m">317</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
-krb5-1.17.1          <span class="p">|</span> <span class="m">1</span>.5 MB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+zstd-1.4.5           <span class="p">|</span> <span class="m">811</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+libarchive-3.3.3     <span class="p">|</span> <span class="m">1</span>.8 MB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+ca-certificates-2020 <span class="p">|</span> <span class="m">146</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+mamba-0.4.3          <span class="p">|</span> <span class="m">630</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+libxml2-2.9.10       <span class="p">|</span> <span class="m">1</span>.4 MB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+lz4-c-1.9.2          <span class="p">|</span> <span class="m">245</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+libiconv-1.15        <span class="p">|</span> <span class="m">2</span>.0 MB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+libedit-3.1.20191231 <span class="p">|</span> <span class="m">132</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+libssh2-1.9.0        <span class="p">|</span> <span class="m">227</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+libcurl-7.71.1       <span class="p">|</span> <span class="m">321</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+certifi-2020.6.20    <span class="p">|</span> <span class="m">151</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+libsolv-0.7.14       <span class="p">|</span> <span class="m">453</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+icu-67.1             <span class="p">|</span> <span class="m">13</span>.2 MB   <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+lzo-2.10             <span class="p">|</span> <span class="m">317</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
+krb5-1.17.1          <span class="p">|</span> <span class="m">1</span>.5 MB    <span class="p">|</span> <span class="c1">#################################################### | 100%</span>
 Preparing transaction: <span class="k">done</span>
 Verifying transaction: <span class="k">done</span>
 Executing transaction: <span class="k">done</span>
-<span class="o">(</span>base<span class="o">)</span> conda@RPi4b:~$ 
+<span class="o">(</span>base<span class="o">)</span> conda@RPi4b:~$
 </pre></div>
 </div>
 </details>
@@ -539,7 +539,7 @@ Executing transaction: <span class="k">done</span>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> conda@RPi4b:~$ <span class="nb">exit</span>
 <span class="nb">logout</span>
 nerohmot@RPi4b:~$ sudo adduser nerohmot conda
-<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> nerohmot: 
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> nerohmot:
 Adding user <span class="sb">`</span>nerohmot<span class="s1">&#39; to group `conda&#39;</span> ...
 Adding user nerohmot to group conda
 Done.
@@ -570,7 +570,7 @@ modified      /home/nerohmot/.bashrc
 <span class="o">==</span>&gt; For changes to take effect, close and re-open your current shell. &lt;<span class="o">==</span>
 
 nerohmot@RPi4b:~$ <span class="nb">source</span> ~/.bashrc
-<span class="o">(</span>base<span class="o">)</span> nerohmot@RPi4b:~$ 
+<span class="o">(</span>base<span class="o">)</span> nerohmot@RPi4b:~$
 </pre></div>
 </div>
 <p>Note: because we removed the execution bit for <code class="docutils literal notranslate"><span class="pre">others</span></code> (cfr. 9b), non-members of the <code class="docutils literal notranslate"><span class="pre">conda</span></code> group can not “accidentally” execute conda.</p>
