@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conda install procedure &#8212; Spyder Remote  documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration" href="spyder-remote-conf.html" />
+    <link rel="prev" title="Welcome to Spyder Remote’s documentation!" href="index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Spyder Remote  documentation</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Contents:
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Conda install procedure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spyder-remote-conf.html">
+   Configuration
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/conda_install_procedure.md.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="conda-install-procedure">
+<h1>Conda install procedure<a class="headerlink" href="#conda-install-procedure" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>On a fresh RPi4b add the user <code class="docutils literal notranslate"><span class="pre">conda</span></code></p></li>
+</ol>
+<details>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>nerohmot@RPi4b:~ $ sudo adduser conda
+Adding user <span class="sb">`</span>conda<span class="s1">&#39; ...</span>
+<span class="s1">Adding new group `conda&#39;</span> <span class="o">(</span><span class="m">1002</span><span class="o">)</span> ...
+Adding new user <span class="sb">`</span>conda<span class="s1">&#39; (1002) with group `conda&#39;</span> ...
+Creating home directory <span class="sb">`</span>/home/conda<span class="s1">&#39; ...</span>
+<span class="s1">Copying files from `/etc/skel&#39;</span> ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information <span class="k">for</span> conda
+Enter the new value, or press ENTER <span class="k">for</span> the default
+	Full Name <span class="o">[]</span>: conda
+	Room Number <span class="o">[]</span>: 
+	Work Phone <span class="o">[]</span>: 
+	Home Phone <span class="o">[]</span>: 
+	Other <span class="o">[]</span>: 
+Is the information correct? <span class="o">[</span>Y/n<span class="o">]</span> y
+nerohmot@RPi4b:~ $
+</pre></div>
+</div>
+<p>TODO: maybe change to a <code class="docutils literal notranslate"><span class="pre">system</span></code> user, but then we need to do some extra steps (/etc/skel, …)</p>
+</details>
+<ol class="simple">
+<li><p>Switch to the new <code class="docutils literal notranslate"><span class="pre">conda</span></code> user</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>nerohmot@RPi4b:~$ su - conda
+Password: 
+conda@RPi4b:~$
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Download the appropriate <code class="docutils literal notranslate"><span class="pre">miniforge</span></code></p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda@RPi4b:~$ curl -SL https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-4.8.3-4-Linux-aarch64.sh --output Miniforge3-4.8.3-4-Linux-aarch64.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+<span class="m">100</span>   <span class="m">168</span>  <span class="m">100</span>   <span class="m">168</span>    <span class="m">0</span>     <span class="m">0</span>    <span class="m">636</span>      <span class="m">0</span> --:--:-- --:--:-- --:--:--   <span class="m">638</span>
+<span class="m">100</span>   <span class="m">648</span>  <span class="m">100</span>   <span class="m">648</span>    <span class="m">0</span>     <span class="m">0</span>   <span class="m">1163</span>      <span class="m">0</span> --:--:-- --:--:-- --:--:--  <span class="m">1163</span>
+<span class="m">100</span> <span class="m">51</span>.0M  <span class="m">100</span> <span class="m">51</span>.0M    <span class="m">0</span>     <span class="m">0</span>  3138k      <span class="m">0</span>  <span class="m">0</span>:00:16  <span class="m">0</span>:00:16 --:--:-- 5746k
+conda@RPi4b:~$
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Download the accompanying sha256 checksum</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda@RPi4b:~$ curl -SL https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-4.8.3-4-Linux-aarch64.sh.sha256 --output Miniforge3-4.8.3-4-Linux-aarch64.sh.sha256
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+<span class="m">100</span>   <span class="m">175</span>  <span class="m">100</span>   <span class="m">175</span>    <span class="m">0</span>     <span class="m">0</span>    <span class="m">629</span>      <span class="m">0</span> --:--:-- --:--:-- --:--:--   <span class="m">627</span>
+<span class="m">100</span>   <span class="m">655</span>  <span class="m">100</span>   <span class="m">655</span>    <span class="m">0</span>     <span class="m">0</span>   <span class="m">1233</span>      <span class="m">0</span> --:--:-- --:--:-- --:--:--  <span class="m">1233</span>
+<span class="m">100</span>   <span class="m">104</span>  <span class="m">100</span>   <span class="m">104</span>    <span class="m">0</span>     <span class="m">0</span>     <span class="m">96</span>      <span class="m">0</span>  <span class="m">0</span>:00:01  <span class="m">0</span>:00:01 --:--:--    <span class="m">96</span>
+conda@RPi4b:~$ 
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Check the checksum</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda@RPi4b:~$ sha256sum -c Miniforge3-4.8.3-4-Linux-aarch64.sh.sha256 <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep OK
+./Miniforge3-4.8.3-4-Linux-aarch64.sh: OK
+conda@RPi4b:~$ 
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Make the installer executable</p></li>
+</ol>
+<details>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda@RPi4b:~$ chmod +x Miniforge3-4.8.3-4-Linux-aarch64.sh
+conda@RPi4b:~$ ls -la
+total <span class="m">52320</span>
+drwxr-xr-x <span class="m">2</span> conda conda     <span class="m">4096</span> Jul <span class="m">27</span> <span class="m">22</span>:56 .
+drwxr-xr-x <span class="m">5</span> root  root      <span class="m">4096</span> Jul <span class="m">27</span> <span class="m">22</span>:50 ..
+-rw-r--r-- <span class="m">1</span> conda conda      <span class="m">220</span> Jul <span class="m">27</span> <span class="m">22</span>:50 .bash_logout
+-rw-r--r-- <span class="m">1</span> conda conda     <span class="m">3771</span> Jul <span class="m">27</span> <span class="m">22</span>:50 .bashrc
+-rw-r--r-- <span class="m">1</span> conda conda      <span class="m">807</span> Jul <span class="m">27</span> <span class="m">22</span>:50 .profile
+-rwxrwxr-x <span class="m">1</span> conda conda <span class="m">53550342</span> Jul <span class="m">27</span> <span class="m">22</span>:55 Miniforge3-4.8.3-4-Linux-aarch64.sh
+-rw-rw-r-- <span class="m">1</span> conda conda      <span class="m">104</span> Jul <span class="m">27</span> <span class="m">22</span>:56 Miniforge3-4.8.3-4-Linux-aarch64.sh.sha256
+conda@RPi4b:~$ 
+</pre></div>
+</div>
+</details>
+<ol class="simple">
+<li><p>Run the installer script <strong>with the appropriate prefix!</strong></p></li>
+</ol>
+<details>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda@RPi4b:~$ ./Miniforge3-4.8.3-4-Linux-aarch64.sh -p /home/conda/forge
+
+Welcome to Miniforge3 <span class="m">4</span>.8.3-4
+
+In order to <span class="k">continue</span> the installation process, please review the license
+agreement.
+Please, press ENTER to <span class="k">continue</span>
+&gt;&gt;&gt; 
+BSD <span class="m">3</span>-clause license
+Copyright <span class="o">(</span>c<span class="o">)</span> <span class="m">2019</span>, conda-forge
+All rights reserved.
+
+Redistribution and use in <span class="nb">source</span> and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+<span class="m">1</span>. Redistributions of <span class="nb">source</span> code must retain the above copyright notice, this
+list of conditions and the following disclaimer.
+
+<span class="m">2</span>. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.
+
+<span class="m">3</span>. Neither the name of the copyright holder nor the names of its contributors
+may be used to endorse or promote products derived from this software without
+specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS <span class="s2">&quot;AS IS&quot;</span> AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES <span class="o">(</span>INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES<span class="p">;</span> LOSS OF USE, DATA, OR PROFITS<span class="p">;</span> OR BUSINESS INTERRUPTION<span class="o">)</span> HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT <span class="o">(</span>INCLUDING NEGLIGENCE OR OTHERWISE<span class="o">)</span> ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+Do you accept the license terms? <span class="o">[</span>yes<span class="p">|</span>no<span class="o">]</span>
+<span class="o">[</span>no<span class="o">]</span> &gt;&gt;&gt; yes
+
+Miniforge3 will now be installed into this location:
+/home/conda/forge
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+
+<span class="o">[</span>/home/conda/forge<span class="o">]</span> &gt;&gt;&gt; 
+<span class="nv">PREFIX</span><span class="o">=</span>/home/conda/forge
+Unpacking payload ...
+Collecting package metadata <span class="o">(</span>current_repodata.json<span class="o">)</span>: <span class="k">done</span>                                                                                                                                                                                                     
+Solving environment: <span class="k">done</span>
+
+<span class="c1">## Package Plan ##</span>
+
+  environment location: /home/conda/forge
+
+  added / updated specs:
+    - <span class="nv">_openmp_mutex</span><span class="o">==</span><span class="m">4</span>.5<span class="o">=</span>0_gnu
+    - <span class="nv">brotlipy</span><span class="o">==</span><span class="m">0</span>.7.0<span class="o">=</span>py37h8f50634_1000
+    - <span class="nv">bzip2</span><span class="o">==</span><span class="m">1</span>.0.8<span class="o">=</span>h516909a_2
+    - ca-certificates<span class="o">==</span><span class="m">2020</span>.4.5.1<span class="o">=</span>hecc5488_0
+    - <span class="nv">certifi</span><span class="o">==</span><span class="m">2020</span>.4.5.1<span class="o">=</span>py37hc8dfbb8_0
+    - <span class="nv">cffi</span><span class="o">==</span><span class="m">1</span>.13.2<span class="o">=</span>py37h8022711_0
+    - <span class="nv">chardet</span><span class="o">==</span><span class="m">3</span>.0.4<span class="o">=</span>py37hc8dfbb8_1006
+    - conda-package-handling<span class="o">==</span><span class="m">1</span>.6.0<span class="o">=</span>py37h8f50634_2
+    - <span class="nv">conda</span><span class="o">==</span><span class="m">4</span>.8.3<span class="o">=</span>py37hc8dfbb8_1
+    - <span class="nv">cryptography</span><span class="o">==</span><span class="m">2</span>.9.2<span class="o">=</span>py37hb09aad4_0
+    - <span class="nv">idna</span><span class="o">==</span><span class="m">2</span>.9<span class="o">=</span>py_1
+    - ld_impl_linux-aarch64<span class="o">==</span><span class="m">2</span>.34<span class="o">=</span>h326052a_4
+    - <span class="nv">libffi</span><span class="o">==</span><span class="m">3</span>.2.1<span class="o">=</span>h4c5d2ac_1007
+    - libgcc-ng<span class="o">==</span><span class="m">7</span>.5.0<span class="o">=</span>h8e86211_6
+    - <span class="nv">libgomp</span><span class="o">==</span><span class="m">7</span>.5.0<span class="o">=</span>h8e86211_6
+    - libstdcxx-ng<span class="o">==</span><span class="m">7</span>.5.0<span class="o">=</span>hca8aa85_6
+    - <span class="nv">ncurses</span><span class="o">==</span><span class="m">6</span>.1<span class="o">=</span>hf484d3e_1002
+    - <span class="nv">openssl</span><span class="o">==</span><span class="m">1</span>.1.1g<span class="o">=</span>h516909a_0
+    - <span class="nv">pip</span><span class="o">==</span><span class="m">20</span>.1.1<span class="o">=</span>py_1
+    - <span class="nv">pycosat</span><span class="o">==</span><span class="m">0</span>.6.3<span class="o">=</span>py37h8f50634_1004
+    - <span class="nv">pycparser</span><span class="o">==</span><span class="m">2</span>.20<span class="o">=</span>py_0
+    - <span class="nv">pyopenssl</span><span class="o">==</span><span class="m">19</span>.1.0<span class="o">=</span>py_1
+    - <span class="nv">pysocks</span><span class="o">==</span><span class="m">1</span>.7.1<span class="o">=</span>py37hc8dfbb8_1
+    - <span class="nv">python</span><span class="o">==</span><span class="m">3</span>.7.6<span class="o">=</span>h89ca082_5_cpython
+    - <span class="nv">python_abi</span><span class="o">==</span><span class="m">3</span>.7<span class="o">=</span>1_cp37m
+    - <span class="nv">readline</span><span class="o">==</span><span class="m">8</span>.0<span class="o">=</span>h75b48e3_0
+    - <span class="nv">requests</span><span class="o">==</span><span class="m">2</span>.23.0<span class="o">=</span>pyh8c360ce_2
+    - <span class="nv">ruamel_yaml</span><span class="o">==</span><span class="m">0</span>.15.80<span class="o">=</span>py37h8f50634_1001
+    - <span class="nv">setuptools</span><span class="o">==</span><span class="m">46</span>.4.0<span class="o">=</span>py37hc8dfbb8_0
+    - <span class="nv">six</span><span class="o">==</span><span class="m">1</span>.15.0<span class="o">=</span>pyh9f0ad1d_0
+    - <span class="nv">sqlite</span><span class="o">==</span><span class="m">3</span>.30.1<span class="o">=</span>h283c62a_0
+    - <span class="nv">tk</span><span class="o">==</span><span class="m">8</span>.6.10<span class="o">=</span>hed695b0_0
+    - <span class="nv">tqdm</span><span class="o">==</span><span class="m">4</span>.46.0<span class="o">=</span>pyh9f0ad1d_0
+    - <span class="nv">urllib3</span><span class="o">==</span><span class="m">1</span>.25.9<span class="o">=</span>py_0
+    - <span class="nv">wheel</span><span class="o">==</span><span class="m">0</span>.34.2<span class="o">=</span>py_1
+    - <span class="nv">xz</span><span class="o">==</span><span class="m">5</span>.2.5<span class="o">=</span>h6dd45c4_0
+    - <span class="nv">yaml</span><span class="o">==</span><span class="m">0</span>.2.4<span class="o">=</span>h516909a_0
+    - <span class="nv">zlib</span><span class="o">==</span><span class="m">1</span>.2.11<span class="o">=</span>h516909a_1006
+
+
+The following NEW packages will be INSTALLED:
+
+  _openmp_mutex      conda-forge/linux-aarch64::_openmp_mutex-4.5-0_gnu
+  brotlipy           conda-forge/linux-aarch64::brotlipy-0.7.0-py37h8f50634_1000
+  bzip2              conda-forge/linux-aarch64::bzip2-1.0.8-h516909a_2
+  ca-certificates    conda-forge/linux-aarch64::ca-certificates-2020.4.5.1-hecc5488_0
+  certifi            conda-forge/linux-aarch64::certifi-2020.4.5.1-py37hc8dfbb8_0
+  cffi               conda-forge/linux-aarch64::cffi-1.13.2-py37h8022711_0
+  chardet            conda-forge/linux-aarch64::chardet-3.0.4-py37hc8dfbb8_1006
+  conda              conda-forge/linux-aarch64::conda-4.8.3-py37hc8dfbb8_1
+  conda-package-han~ conda-forge/linux-aarch64::conda-package-handling-1.6.0-py37h8f50634_2
+  cryptography       conda-forge/linux-aarch64::cryptography-2.9.2-py37hb09aad4_0
+  idna               conda-forge/noarch::idna-2.9-py_1
+  ld_impl_linux-aar~ conda-forge/linux-aarch64::ld_impl_linux-aarch64-2.34-h326052a_4
+  libffi             conda-forge/linux-aarch64::libffi-3.2.1-h4c5d2ac_1007
+  libgcc-ng          conda-forge/linux-aarch64::libgcc-ng-7.5.0-h8e86211_6
+  libgomp            conda-forge/linux-aarch64::libgomp-7.5.0-h8e86211_6
+  libstdcxx-ng       conda-forge/linux-aarch64::libstdcxx-ng-7.5.0-hca8aa85_6
+  ncurses            conda-forge/linux-aarch64::ncurses-6.1-hf484d3e_1002
+  openssl            conda-forge/linux-aarch64::openssl-1.1.1g-h516909a_0
+  pip                conda-forge/noarch::pip-20.1.1-py_1
+  pycosat            conda-forge/linux-aarch64::pycosat-0.6.3-py37h8f50634_1004
+  pycparser          conda-forge/noarch::pycparser-2.20-py_0
+  pyopenssl          conda-forge/noarch::pyopenssl-19.1.0-py_1
+  pysocks            conda-forge/linux-aarch64::pysocks-1.7.1-py37hc8dfbb8_1
+  python             conda-forge/linux-aarch64::python-3.7.6-h89ca082_5_cpython
+  python_abi         conda-forge/linux-aarch64::python_abi-3.7-1_cp37m
+  readline           conda-forge/linux-aarch64::readline-8.0-h75b48e3_0
+  requests           conda-forge/noarch::requests-2.23.0-pyh8c360ce_2
+  ruamel_yaml        conda-forge/linux-aarch64::ruamel_yaml-0.15.80-py37h8f50634_1001
+  setuptools         conda-forge/linux-aarch64::setuptools-46.4.0-py37hc8dfbb8_0
+  six                conda-forge/noarch::six-1.15.0-pyh9f0ad1d_0
+  sqlite             conda-forge/linux-aarch64::sqlite-3.30.1-h283c62a_0
+  tk                 conda-forge/linux-aarch64::tk-8.6.10-hed695b0_0
+  tqdm               conda-forge/noarch::tqdm-4.46.0-pyh9f0ad1d_0
+  urllib3            conda-forge/noarch::urllib3-1.25.9-py_0
+  wheel              conda-forge/noarch::wheel-0.34.2-py_1
+  xz                 conda-forge/linux-aarch64::xz-5.2.5-h6dd45c4_0
+  yaml               conda-forge/linux-aarch64::yaml-0.2.4-h516909a_0
+  zlib               conda-forge/linux-aarch64::zlib-1.2.11-h516909a_1006
+
+
+Preparing transaction: <span class="k">done</span>
+Executing transaction: <span class="k">done</span>
+installation finished.
+Do you wish the installer to initialize Miniforge3
+by running conda init? <span class="o">[</span>yes<span class="p">|</span>no<span class="o">]</span>
+<span class="o">[</span>no<span class="o">]</span> &gt;&gt;&gt; yes
+./Miniforge3-4.8.3-4-Linux-aarch64.sh: <span class="m">404</span>: <span class="o">[[</span>: not found
+no change     /home/conda/forge/condabin/conda
+no change     /home/conda/forge/bin/conda
+no change     /home/conda/forge/bin/conda-env
+no change     /home/conda/forge/bin/activate
+no change     /home/conda/forge/bin/deactivate
+no change     /home/conda/forge/etc/profile.d/conda.sh
+no change     /home/conda/forge/etc/fish/conf.d/conda.fish
+no change     /home/conda/forge/shell/condabin/Conda.psm1
+no change     /home/conda/forge/shell/condabin/conda-hook.ps1
+no change     /home/conda/forge/lib/python3.7/site-packages/xontrib/conda.xsh
+no change     /home/conda/forge/etc/profile.d/conda.csh
+modified      /home/conda/.bashrc
+
+<span class="o">==</span>&gt; For changes to take effect, close and re-open your current shell. &lt;<span class="o">==</span>
+
+If you<span class="s1">&#39;d prefer that conda&#39;</span>s base environment not be activated on startup, 
+   <span class="nb">set</span> the auto_activate_base parameter to false: 
+
+conda config --set auto_activate_base <span class="nb">false</span>
+
+Thank you <span class="k">for</span> installing Miniforge3!
+conda@RPi4b:~$ 
+</pre></div>
+</div>
+</details>
+<ol class="simple">
+<li><p>Exit the shell and re-enter and verify that the <code class="docutils literal notranslate"><span class="pre">base</span></code> conda environment is active.</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda@RPi4b:~$ <span class="nb">exit</span>
+<span class="nb">logout</span>
+nerohmot@RPi4b:~$ su - conda
+Password: 
+<span class="o">(</span>base<span class="o">)</span> conda@RPi4b:~$
+</pre></div>
+</div>
+<p>TODO. fix permisions in  /home/conda/forge/pkgs/cache (group has no write access to 2 .json files)</p>
+<ol class="simple">
+<li><p>Look where <code class="docutils literal notranslate"><span class="pre">conda</span></code> itself is installed and:</p></li>
+</ol>
+<ul class="simple">
+<li><p>set the uid bit for <code class="docutils literal notranslate"><span class="pre">conda</span></code></p></li>
+<li><p>remove execution bit ‘others’</p></li>
+<li><p>make a hard link to <code class="docutils literal notranslate"><span class="pre">/usr/bin</span></code></p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> conda@RPi4b:~$ which conda
+/home/conda/forge/bin/conda
+<span class="o">(</span>base<span class="o">)</span> conda@RPi4b:~$ <span class="nb">exit</span>
+<span class="nb">logout</span>
+nerohmot@RPi4b:~$ sudo chmod u+s /home/conda/forge/bin/conda
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> nerohmot:
+nerohmot@RPi4b:~$ sudo chmod o-x /home/conda/forge/bin/conda
+nerohmot@RPi4b:~$ sudo ln /home/conda/forge/bin/conda /usr/bin/conda
+nerohmot@RPi4b:~$
+</pre></div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">conda</span></code> user is <strong>NOT</strong> (and shall <strong>NEVER</strong> be) a <code class="docutils literal notranslate"><span class="pre">sudo-er</span></code>!</p></li>
+<li><p>uninstalling means : <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">deluser</span> <span class="pre">--remove-home</span> <span class="pre">--remove-all-files</span> <span class="pre">conda</span></code></p></li>
+</ul>
+<ol class="simple">
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">mamba</span></code> in the <code class="docutils literal notranslate"><span class="pre">base</span></code> environment</p></li>
+</ol>
+<details>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>nerohmot@RPi4b:~$ su - conda
+Password:
+<span class="o">(</span>base<span class="o">)</span> conda@RPi4b:~$ conda install mamba
+Collecting package metadata <span class="o">(</span>current_repodata.json<span class="o">)</span>: <span class="k">done</span>
+Solving environment: <span class="k">done</span>
+
+<span class="c1">## Package Plan ##</span>
+
+  environment location: /home/conda/forge
+
+  added / updated specs:
+    - mamba
+
+
+The following packages will be downloaded:
+
+    package                    <span class="p">|</span>            build
+    ---------------------------<span class="p">|</span>-----------------
+    ca-certificates-2020.6.20  <span class="p">|</span>       hecda079_0         <span class="m">146</span> KB  conda-forge
+    certifi-2020.6.20          <span class="p">|</span>   py37hc8dfbb8_0         <span class="m">151</span> KB  conda-forge
+    icu-67.1                   <span class="p">|</span>       h4c5d2ac_0        <span class="m">13</span>.2 MB  conda-forge
+    krb5-1.17.1                <span class="p">|</span>       h09dc549_1         <span class="m">1</span>.5 MB  conda-forge
+    libarchive-3.3.3           <span class="p">|</span>    h3a8160c_1008         <span class="m">1</span>.8 MB  conda-forge
+    libcurl-7.71.1             <span class="p">|</span>       hcdd3856_3         <span class="m">321</span> KB  conda-forge
+    libedit-3.1.20191231       <span class="p">|</span>       h46ee950_1         <span class="m">132</span> KB  conda-forge
+    libiconv-1.15              <span class="p">|</span>    h6dd45c4_1006         <span class="m">2</span>.0 MB  conda-forge
+    libsolv-0.7.14             <span class="p">|</span>       h8b12597_3         <span class="m">453</span> KB  conda-forge
+    libssh2-1.9.0              <span class="p">|</span>       hab1572f_4         <span class="m">227</span> KB  conda-forge
+    libxml2-2.9.10             <span class="p">|</span>       h8b8c825_2         <span class="m">1</span>.4 MB  conda-forge
+    lz4-c-1.9.2                <span class="p">|</span>       he1b5a44_1         <span class="m">245</span> KB  conda-forge
+    lzo-2.10                   <span class="p">|</span>    h14c3975_1000         <span class="m">317</span> KB  conda-forge
+    mamba-0.4.3                <span class="p">|</span>   py37h782c684_0         <span class="m">630</span> KB  conda-forge
+    zstd-1.4.5                 <span class="p">|</span>       h6597ccf_2         <span class="m">811</span> KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        <span class="m">23</span>.3 MB
+
+The following NEW packages will be INSTALLED:
+
+  icu                conda-forge/linux-aarch64::icu-67.1-h4c5d2ac_0
+  krb5               conda-forge/linux-aarch64::krb5-1.17.1-h09dc549_1
+  libarchive         conda-forge/linux-aarch64::libarchive-3.3.3-h3a8160c_1008
+  libcurl            conda-forge/linux-aarch64::libcurl-7.71.1-hcdd3856_3
+  libedit            conda-forge/linux-aarch64::libedit-3.1.20191231-h46ee950_1
+  libiconv           conda-forge/linux-aarch64::libiconv-1.15-h6dd45c4_1006
+  libsolv            conda-forge/linux-aarch64::libsolv-0.7.14-h8b12597_3
+  libssh2            conda-forge/linux-aarch64::libssh2-1.9.0-hab1572f_4
+  libxml2            conda-forge/linux-aarch64::libxml2-2.9.10-h8b8c825_2
+  lz4-c              conda-forge/linux-aarch64::lz4-c-1.9.2-he1b5a44_1
+  lzo                conda-forge/linux-aarch64::lzo-2.10-h14c3975_1000
+  mamba              conda-forge/linux-aarch64::mamba-0.4.3-py37h782c684_0
+  zstd               conda-forge/linux-aarch64::zstd-1.4.5-h6597ccf_2
+
+The following packages will be UPDATED:
+
+  ca-certificates                     <span class="m">2020</span>.4.5.1-hecc5488_0 --&gt; <span class="m">2020</span>.6.20-hecda079_0
+  certifi                         <span class="m">2020</span>.4.5.1-py37hc8dfbb8_0 --&gt; <span class="m">2020</span>.6.20-py37hc8dfbb8_0
+
+
+Proceed <span class="o">([</span>y<span class="o">]</span>/n<span class="o">)</span>? y
+
+ncurses-6.2          <span class="p">|</span> <span class="m">1015</span> KB   <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+
+Downloading and Extracting Packages
+zstd-1.4.5           <span class="p">|</span> <span class="m">811</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+libarchive-3.3.3     <span class="p">|</span> <span class="m">1</span>.8 MB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+ca-certificates-2020 <span class="p">|</span> <span class="m">146</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+mamba-0.4.3          <span class="p">|</span> <span class="m">630</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+libxml2-2.9.10       <span class="p">|</span> <span class="m">1</span>.4 MB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+lz4-c-1.9.2          <span class="p">|</span> <span class="m">245</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+libiconv-1.15        <span class="p">|</span> <span class="m">2</span>.0 MB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+libedit-3.1.20191231 <span class="p">|</span> <span class="m">132</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+libssh2-1.9.0        <span class="p">|</span> <span class="m">227</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+libcurl-7.71.1       <span class="p">|</span> <span class="m">321</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+certifi-2020.6.20    <span class="p">|</span> <span class="m">151</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+libsolv-0.7.14       <span class="p">|</span> <span class="m">453</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+icu-67.1             <span class="p">|</span> <span class="m">13</span>.2 MB   <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+lzo-2.10             <span class="p">|</span> <span class="m">317</span> KB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+krb5-1.17.1          <span class="p">|</span> <span class="m">1</span>.5 MB    <span class="p">|</span> <span class="c1">#################################################### | 100% </span>
+Preparing transaction: <span class="k">done</span>
+Verifying transaction: <span class="k">done</span>
+Executing transaction: <span class="k">done</span>
+<span class="o">(</span>base<span class="o">)</span> conda@RPi4b:~$ 
+</pre></div>
+</div>
+</details>
+<ol class="simple">
+<li><p>Exit the <code class="docutils literal notranslate"><span class="pre">conda</span></code> user shell and add all users that will use the <code class="docutils literal notranslate"><span class="pre">base</span></code> installation to the <code class="docutils literal notranslate"><span class="pre">conda</span></code> group.</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> conda@RPi4b:~$ <span class="nb">exit</span>
+<span class="nb">logout</span>
+nerohmot@RPi4b:~$ sudo adduser nerohmot conda
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> nerohmot: 
+Adding user <span class="sb">`</span>nerohmot<span class="s1">&#39; to group `conda&#39;</span> ...
+Adding user nerohmot to group conda
+Done.
+nerohmot@RPi4b:~$ sudo adduser goofy conda
+Adding user <span class="sb">`</span>goofy<span class="s1">&#39; to group `conda&#39;</span> ...
+Adding user goofy to group conda
+Done.
+nerohmot@RPi4b:~$
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>The users in the <code class="docutils literal notranslate"><span class="pre">conda</span></code> group can now initialize conda (from their path, as <code class="docutils literal notranslate"><span class="pre">/usr/bin</span></code> holda a hardlink to <code class="docutils literal notranslate"><span class="pre">conda</span></code>)</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>nerohmot@RPi4b:~$ conda init
+no change     /home/conda/forge/condabin/conda
+no change     /home/conda/forge/bin/conda
+no change     /home/conda/forge/bin/conda-env
+no change     /home/conda/forge/bin/activate
+no change     /home/conda/forge/bin/deactivate
+no change     /home/conda/forge/etc/profile.d/conda.sh
+no change     /home/conda/forge/etc/fish/conf.d/conda.fish
+no change     /home/conda/forge/shell/condabin/Conda.psm1
+no change     /home/conda/forge/shell/condabin/conda-hook.ps1
+no change     /home/conda/forge/lib/python3.7/site-packages/xontrib/conda.xsh
+no change     /home/conda/forge/etc/profile.d/conda.csh
+modified      /home/nerohmot/.bashrc
+
+<span class="o">==</span>&gt; For changes to take effect, close and re-open your current shell. &lt;<span class="o">==</span>
+
+nerohmot@RPi4b:~$ <span class="nb">source</span> ~/.bashrc
+<span class="o">(</span>base<span class="o">)</span> nerohmot@RPi4b:~$ 
+</pre></div>
+</div>
+<p>Note: because we removed the execution bit for <code class="docutils literal notranslate"><span class="pre">others</span></code> (cfr. 9b), non-members of the <code class="docutils literal notranslate"><span class="pre">conda</span></code> group can not “accidentally” execute conda.</p>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Welcome to Spyder Remote’s documentation!</a>
+    <a class='right-next' id="next-link" href="spyder-remote-conf.html" title="next page">Configuration</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Tom Hören<br/>
+        
+            &copy; Copyright 2020, Tom Hören.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
