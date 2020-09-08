@@ -1,3 +1,5 @@
+# Conda install procedure
+
 1. On a fresh RPi4b add the user `conda`
 
 <details>
