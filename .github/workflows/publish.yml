@@ -1,11 +1,12 @@
 name: Upload Python Package
 
 on:
-  release:
-    types: published
+  push:
+    tags:
+    - 'v**'
 
 jobs:
-  deploy:
+  upload-pypi:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -16,14 +17,29 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade check_manifest pip setuptools twine wheel
-    - name: Build release artefacts
+    - name: Build Client release artefacts
       run: |
+        cd spyder-remote-client
         check-manifest -v
         python setup.py sdist bdist_wheel
         python -m twine check dist/*
-    - name: Publish release
+    - name: Publish Server release
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
+        cd spyder-remote-client
+        python -m twine upload dist/*
+    - name: Build Server release artefacts
+      run: |
+        cd spyder-remote-server
+        check-manifest -v
+        python setup.py sdist bdist_wheel
+        python -m twine check dist/*
+    - name: Publish Client release
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      run: |
+        cd spyder-remote-server
         python -m twine upload dist/*
