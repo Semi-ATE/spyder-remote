@@ -1,5 +1,5 @@
-# Copyright (c) Tom Hören.
-# Distributed under the terms of the MIT License.
+# Copyright (c) Semi-ATE
+# Distributed under the terms of the MIT License
 
 # Standard library imports
 import ast
