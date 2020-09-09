@@ -6,8 +6,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
       - name: Setup python
         uses: actions/setup-python@v2
         with:
@@ -32,8 +30,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
       - name: Setup python
         uses: actions/setup-python@v2
         with:
@@ -52,8 +48,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
       - name: Setup python
         uses: actions/setup-python@v2
         with:
