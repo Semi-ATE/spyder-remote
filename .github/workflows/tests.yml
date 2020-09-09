@@ -42,7 +42,7 @@ jobs:
       - name: Client Tests
         run: |
           cd spyder-remote-client
-          pytest tests/
+          pytest tests/ --cov=spyder_remote_client
 
   test-server:
     runs-on: ubuntu-latest
@@ -61,4 +61,4 @@ jobs:
       - name: Server Tests
         run: |
           cd spyder-remote-server
-          pytest tests/
+          pytest tests/ --cov=spyder_remote_server
