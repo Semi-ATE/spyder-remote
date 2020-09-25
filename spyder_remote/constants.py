@@ -10,5 +10,5 @@ import os
 zeroconf_type = "_spyder_remote._tcp.local."
 project_root = os.path.dirname(os.path.abspath(__file__))
 
-config_file = "spyder-remote.conf"
+config_file = "spyder-remote.ini"
 config_template = os.path.join(project_root, "server", config_file)

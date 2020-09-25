@@ -33,13 +33,15 @@ setup(
     description="",
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     install_requires=[
-        "netifaces",
-        "psutil",
+        # "netifaces",
+        # "psutil",
+        "click",
+        "jinja2",
         "zeroconf",
     ],
     entry_points={
         'console_scripts': [
-            'cmd = loghub.cli.main:main',
+            'spyder-remote-server = spyder_remote_server.cli:main',
         ]
     },
 )

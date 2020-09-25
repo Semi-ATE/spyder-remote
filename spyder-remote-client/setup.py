@@ -39,11 +39,8 @@ setup(
         "zeroconf",
     ],
     entry_points={
-        'console_scripts': [
-            'cmd = loghub.cli.main:main',
-        ],
         "spyder.plugins": [
-            "spyder_remote = spyder_remote_client.plugin:SpyderRemote"
+            "spyder_remote = spyder_remote_client.spyder.plugin:SpyderRemote"
         ]
     },
 )

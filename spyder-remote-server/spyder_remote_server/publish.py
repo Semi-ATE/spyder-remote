@@ -65,12 +65,21 @@ def create_info(name, addresses, port, desc=[], service="_sksd._tcp.local."):
 
 
 if __name__ == '__main__':
-    zeroconf = Zeroconf(ip_version=IPVersion.All)
+    zeroconf = Zeroconf(ip_version=IPVersion.V6Only)
 
-    info = ServiceInfo("Tom's MiniSCT",)
+    desc = {'path': '/~paulsm/'}
 
+    info = ServiceInfo(
+        "_http._tcp.local.",
+        "Paul's Test Web Site._http._tcp.local.",
+        addresses=[socket.inet_aton("127.0.0.1")],
+        port=80,
+        properties=desc,
+        server="ash-2.local.",
+    )
 
-    info = create_info("Tom's MiniSCT", addresses, port)
+    # info = ServiceInfo("Tom's MiniSCT",)
+    # info = create_info("Tom's MiniSCT", addresses, port)
 
     print("registering ...")
     zeroconf.register_service(info)
