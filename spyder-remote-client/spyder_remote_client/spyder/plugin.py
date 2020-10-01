@@ -1,6 +1,5 @@
 # Copyright (c) Semi-ATE
 # Distributed under the terms of the MIT License
-
 """
 Spyder Remote Plugin.
 """
@@ -8,18 +7,17 @@ Spyder Remote Plugin.
 import json
 import tempfile
 
-# Third party imports
 from qtpy.QtGui import QIcon
 from spyder.api.plugins import Plugins, SpyderPluginV2
 from spyder.api.translations import get_translation
-
-# Local imports
 from spyder_remote_client.spyder.container import SpyderRemoteContainer
 
 # Localization
-_ = get_translation('spyder_remote_client')
+_ = get_translation("spyder_remote_client")
 
 
+# --- Constants
+# ----------------------------------------------------------------------------
 class SpyderRemoteActions:
     NewRemoteConsole = "new_remote_console_action"
     CloseRemoteKernels = "close_remote_kernels"
@@ -32,7 +30,7 @@ class SpyderRemote(SpyderPluginV2):
     Spyder Remote Plugin.
     """
 
-    NAME = 'spyder_remote'
+    NAME = "spyder_remote"
     REQUIRES = []
     CONTAINER_CLASS = SpyderRemoteContainer
     CONF_SECTION = NAME
@@ -56,7 +54,7 @@ class SpyderRemote(SpyderPluginV2):
             triggered=self.new_remote_console,
             # context=Qt.ApplicationShortcut,
             # shortcut_context="_",
-            register_shortcut=True
+            register_shortcut=True,
         )
         self.close_all_kernels_action = self.create_action(
             SpyderRemoteActions.CloseRemoteKernels,
@@ -64,14 +62,14 @@ class SpyderRemote(SpyderPluginV2):
             triggered=self.close_all_kernels,
             # context=Qt.ApplicationShortcut,
             # shortcut_context="_",
-            register_shortcut=True
+            register_shortcut=True,
         )
         main_consoles_menu = self.main.consoles_menu_actions
         main_consoles_menu.insert(0, self.new_remote_client_action)
         main_consoles_menu.insert(1, self.close_all_kernels_action)
         container.sig_connect_to_kernel.connect(self.start_remote_kernel)
 
-        print("Registering Spyder Remote!")
+        print("Finished registering Spyder-Remote!")
 
     def on_close(self, cancellable=True):
         self.close_all_kernels()
@@ -79,16 +77,29 @@ class SpyderRemote(SpyderPluginV2):
     # --- API
     # ------------------------------------------------------------------------
     def close_all_kernels(self):
+        """
+        Close all kernels started on this session.
+        """
         self.get_container().close_all_kernels()
 
     def new_remote_console(self):
+        """
+        Connect to a remote console.
+        """
         self.get_container().new_remote_console()
 
-    def start_remote_kernel(self, data):
+    def start_remote_kernel(self, json_data):
+        """
+        Parameters
+        ----------
+        json_data: dict
+            The kernel spec file with the information to perform the
+            connection.
+        """
         _, connection_file = tempfile.mkstemp(suffix=".json")
-        print([connection_file])
         with open(connection_file, "w") as fh:
-            fh.write(json.dumps(data["json_data"]))
+            fh.write(json.dumps(json_data["json_data"]))
 
         self.main.ipyconsole._create_client_for_kernel(
-            connection_file, None, None, None)
+            connection_file, None, None, None
+        )

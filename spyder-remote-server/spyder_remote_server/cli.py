@@ -1,25 +1,23 @@
 # Copyright (c) Semi-ATE
 # Distributed under the terms of the MIT License
-
 """
-Command line interface.
+Spyder Remote command line interface.
 """
 
 import os
+import subprocess
 import sys
 
-from daemoniker import send
-from daemoniker import SIGINT
 import click
-import subprocess
-
+from daemoniker import send, SIGINT
 from spyder_remote_server.api import get_cpu_count, install_daemon, uninstall_daemon
-from spyder_remote_server.constants import AUTO
-from spyder_remote_server.constants import PID_FILE_PATH
+from spyder_remote_server.constants import AUTO, PID_FILE_PATH
 
+# Constants
 HERE = os.path.abspath(os.path.dirname(__file__))
 DAEMON_FILE = "daemon.py"
 DAEMON_PATH = os.path.join(HERE, DAEMON_FILE)
+
 
 @click.group(
     help=(

@@ -1,6 +1,7 @@
 # Copyright (c) Semi-ATE
 # Distributed under the terms of the MIT License
-
+"""
+"""
 import ast
 import configparser
 import multiprocessing
@@ -9,11 +10,10 @@ import platform
 import socket
 
 from jinja2 import Environment, PackageLoader, select_autoescape
-
 from spyder_remote_server.constants import AUTO
 from spyder_remote_server.templates import CONFIG_TEMPLATE
 
-
+# Constants
 DEFAULT_CONFIG = {
     ##############################################################################
     # The `enable` keyword will determine if the Spyder Kernels Daemon will start
@@ -22,8 +22,7 @@ DEFAULT_CONFIG = {
     #  * if `enable` is not supplied, it is presumed turned off!
     #  * if `enable` can not be interpreted, it is presumed turned off!
     #
-    'enable': False,
-
+    "enable": False,
     ##############################################################################
     # The `name` is the 'pretty print' (host)name that will be published.
     # spaces, apostrops are allowed, it is a (UTF-8) string!
@@ -33,8 +32,7 @@ DEFAULT_CONFIG = {
     # Notes:
     #  * if no service `name` is provided, the service will not start!
     #
-    'name': socket.gethostname() or platform.node(),
-
+    "name": socket.gethostname() or platform.node(),
     ##############################################################################
     # The `guest_account` keyword determines as what guest `user` the sksd
     # will spin up the Spyder Kernels.
@@ -47,8 +45,7 @@ DEFAULT_CONFIG = {
     #  * if the guest account needs an empty string password, the format is "user:"
     #  * if the guest account doesn't need a password, the format is "user"
     #
-    'guest_account': None,
-
+    "guest_account": None,
     ##############################################################################
     # The `guest_can_manage_environments` keyword determines if a `guest`
     # is allowed to create/modify (guest) environments.
@@ -58,8 +55,7 @@ DEFAULT_CONFIG = {
     #  * a `user` (guest or not) can in any case not create/modify environments
     #    outside the scope of the user !
     #
-    'guest_can_manage_environments': False,
-
+    "guest_can_manage_environments": False,
     ##############################################################################
     # The `max_kernels` keyword determines the maximum number of spyder-kernels
     # `skd` can spinn up. This is a (positive) integer value. If the value can't
@@ -78,8 +74,7 @@ DEFAULT_CONFIG = {
     #
     # Default value = AUTO
     #
-    'max_kernels': AUTO,
-
+    "max_kernels": AUTO,
     ##############################################################################
     # The `exclude_environments` keyword determines what environments will **NOT**
     # be published. (regardless if they exist or not)
@@ -92,7 +87,7 @@ DEFAULT_CONFIG = {
     #
     # Default value = ["base", "_*"]
     #
-    'exclude_environments': ["base", "_*"],
+    "exclude_environments": ["base", "_*"],
 }
 
 
@@ -109,20 +104,26 @@ def config_path():
     if not os.path.isdir(path):
         os.makedirs(path)
 
-    # return "/etc/spyder-remote.conf"
     return os.path.join(path, "spyder-remote.ini")
 
 
 def create_config(guest, cores):
     """
-    TODO:
+    Create a confguration file in the configuration folder.
+
+    Parameters
+    ----------
+    guest: str
+        Account to use as guest account.
+    cores: int
+        Maximum number of spyder-kernels allowed.
     """
     config = DEFAULT_CONFIG.copy()
-    config['guest_account'] = guest
-    config['max_kernels'] = cores
-    config['enable'] = True
+    config["guest_account"] = guest
+    config["max_kernels"] = cores
+    config["enable"] = True
 
-    env = Environment(loader=PackageLoader('spyder_remote_server', 'templates'))
+    env = Environment(loader=PackageLoader("spyder_remote_server", "templates"))
     template = env.get_template(CONFIG_TEMPLATE)
     data = template.render(config=config)
 
@@ -132,14 +133,24 @@ def create_config(guest, cores):
 
 def remove_config():
     """
-    TODO:
+    Remove configuration file from configuration path.
     """
-    os.remove(config_path())
+    try:
+        os.remove(config_path())
+    except Exception as e:
+        print(e)
 
 
 def read_config():
     """
-    TODO:
+    Read Spyder Remote configuration.
+
+    If no configuration is found, the default configuration is returned.
+
+    Returns
+    -------
+    dict
+        Configuration dictionary.
     """
     fpath = config_path()
     config_parser = configparser.ConfigParser()
@@ -159,12 +170,16 @@ def read_config():
 
 
 def get_log_path():
+    """
+    Get the logging folder path.
+
+    Returns
+    -------
+    str
+        Path to logging folder.
+    """
     path = os.path.expanduser("~/.spyder-remote")
     if not os.path.isdir(path):
         os.makedirs(path)
 
-    # return "/etc/spyder-remote.conf"
-    return os.path.join(path, 'spyder-remote-server.log')
-
-
-# https://docs.python.org/3/library/fnmatch.html
+    return os.path.join(path, "spyder-remote-server.log")

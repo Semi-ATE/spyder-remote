@@ -1,15 +1,13 @@
 # Copyright (c) Semi-ATE
 # Distributed under the terms of the MIT License
-
 # https://github.com/torfsen/python-systemd-tutorial
 # https://daemoniker.readthedocs.io/en/latest/
-
 import os
 import tempfile
 import time
 
-from daemoniker import Daemonizer, SignalHandler1
-
+from daemoniker import Daemonizer
+from daemoniker import SignalHandler1
 from spyder_remote_server.constants import PID_FILE_PATH
 from spyder_remote_server.server import SpyderRemoteServer
 
@@ -23,7 +21,7 @@ def parent_only_code():
 
 
 def code_continues_here():
-    print('code continues here!')
+    print("code continues here!")
     server = SpyderRemoteServer()
     try:
         server.start_server()
@@ -31,7 +29,6 @@ def code_continues_here():
         server.stop()
     finally:
         server.stop()
-
 
 
 with Daemonizer() as (is_setup, daemonizer):
@@ -59,11 +56,12 @@ sighandler.start()
 
 # Or, define your own handlers, even after starting signal handling
 def handle_sigint(signum):
-    print('SIGINT received.')
+    print("SIGINT received.")
+
 
 sighandler.sigint = handle_sigint
 
-print('code continues here!')
+print("code continues here!")
 server = SpyderRemoteServer()
 try:
     server.start_server()

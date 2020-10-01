@@ -1,6 +1,5 @@
 # Copyright (c) Semi-ATE
 # Distributed under the terms of the MIT License
-
 import subprocess
 
 from spyder_remote_client.spyder import DIALOG_UI_PATH

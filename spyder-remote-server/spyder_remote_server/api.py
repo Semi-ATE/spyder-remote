@@ -1,9 +1,9 @@
 # Copyright (c) Semi-ATE
 # Distributed under the terms of the MIT License
-
 import multiprocessing
 
-from spyder_remote_server.config import create_config, remove_config
+from spyder_remote_server.config import create_config
+from spyder_remote_server.config import remove_config
 
 
 def register_service():

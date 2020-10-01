@@ -1,27 +1,35 @@
 # Copyright (c) Semi-ATE
 # Distributed under the terms of the MIT License
+"""
+Spyder remote server utilities.
+"""
 
-# Standard library imports
 import json
 import os
 import pwd
+import socket
 import subprocess
 import sys
+from contextlib import closing
 
-
-
-WIN = os.name == 'nt'
+# Constants
+WIN = os.name == "nt"
 
 
 def run_process(cmd_list):
-    """Run subprocess with cmd_list and return stdour, stderr, error."""
-    stdout = ''
-    stderr = ''
+    """
+    Run subprocess with cmd_list and return stdour, stderr, error.
+
+    Returns
+    -------
+    tuple
+        Tuple of stdout, stderr and any exception found.
+    """
+    stdout = ""
+    stderr = ""
     error = False
     try:
-        p = subprocess.Popen(
-            cmd_list, stdout=subprocess.PIPE, stderr=subprocess.PIPE
-        )
+        p = subprocess.Popen(cmd_list, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = p.communicate()
         stdout = stdout.decode()
         stderr = stderr.decode()
@@ -32,27 +40,41 @@ def run_process(cmd_list):
 
 
 def is_conda_available():
-    """Check if conda is available in path."""
+    """
+    Check if conda is available in path.
+
+    Returns
+    -------
+    bool
+        Wheter conda is available in the system.
+    """
     return bool(get_conda_cmd_path())
 
 
 def get_conda_cmd_path():
-    """Check if conda is found on path."""
+    """
+    Check if conda is found on path.
+
+    Returns
+    -------
+    str
+        Path to conda executable.
+    """
     cmds = []
     conda_path = None
-    bin_folder = 'Scripts' if WIN else 'bin'
-    conda_exe = 'conda-script.py' if WIN else 'conda'
+    bin_folder = "Scripts" if WIN else "bin"
+    conda_exe = "conda-script.py" if WIN else "conda"
     env_prefix = os.path.dirname(os.path.dirname(sys.prefix))
 
     cmds.append(os.path.join(env_prefix, bin_folder, conda_exe))
     cmds.append(os.path.join(sys.prefix, bin_folder, conda_exe))
-    cmds.append('conda')
+    cmds.append("conda")
 
     for cmd in cmds:
-        cmd_list = [cmd, '--version']
+        cmd_list = [cmd, "--version"]
         stdout, stderr, error = run_process(cmd_list)
         if not error:
-            if stdout.startswith('conda ') or stderr.startswith('conda '):
+            if stdout.startswith("conda ") or stderr.startswith("conda "):
                 conda_path = cmd
                 break
 
@@ -60,11 +82,18 @@ def get_conda_cmd_path():
 
 
 def get_conda_info():
-    """Return conda info as a dictionary."""
+    """
+    Return conda info as a dictionary.
+
+    Returns
+    -------
+    dict
+        Conda information.
+    """
     conda_cmd = get_conda_cmd_path()
     info = None
     if conda_cmd:
-        cmd_list = [conda_cmd, 'info', '--json']
+        cmd_list = [conda_cmd, "info", "--json"]
         out, err, error = run_process(cmd_list)
         try:
             info = json.loads(out)
@@ -76,6 +105,45 @@ def get_conda_info():
 
 def get_username():
     """
+    Get the current username.
+
     https://stackoverflow.com/a/2899055
     """
     return pwd.getpwuid(os.getuid())[0]
+
+
+def get_ip():
+    """
+    Get the public IP interface of the current machine.
+
+    Returns
+    -------
+    str
+        IP of current machine.
+    """
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # doesn't even have to be reachable
+        s.connect(("10.255.255.255", 1))
+        IP = s.getsockname()[0]
+    except Exception:
+        IP = "127.0.0.1"
+    finally:
+        s.close()
+
+    return IP
+
+
+def find_free_port():
+    """
+    Find free port.
+
+    Returns
+    -------
+    int
+        Free port found.
+    """
+    with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as s:
+        s.bind(("", 0))
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        return s.getsockname()[1]
