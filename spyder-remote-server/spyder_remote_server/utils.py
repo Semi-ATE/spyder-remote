@@ -16,6 +16,32 @@ from contextlib import closing
 WIN = os.name == "nt"
 
 
+def demote(user_uid, user_gid):
+    """
+    Callback to use with subprocess `preexec_fn` to change the user running
+    the process.
+
+    Parameters
+    ----------
+    user_uid: int
+        TODO:
+    user_gid: int
+        TODO:
+    """
+
+    def result():
+        report_ids("starting demotion")
+        os.setgid(user_gid)
+        os.setuid(user_uid)
+        report_ids("finished demotion")
+
+    return result
+
+
+def report_ids(msg):
+    print("uid, gid = %d, %d; %s" % (os.getuid(), os.getgid(), msg))
+
+
 def run_process(cmd_list):
     """
     Run subprocess with cmd_list and return stdour, stderr, error.

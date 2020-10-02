@@ -10,6 +10,7 @@ import json
 import logging
 import os
 import platform
+import pwd
 import signal
 import socket
 import subprocess
@@ -23,7 +24,7 @@ from zeroconf import IPVersion, ServiceInfo, Zeroconf
 from spyder_remote_server.conda_api import CondaManager
 from spyder_remote_server.config import get_log_path, read_config
 from spyder_remote_server.constants import SERVICE_TYPE
-from spyder_remote_server.utils import find_free_port, get_ip
+from spyder_remote_server.utils import find_free_port, get_ip, demote
 
 
 # TODO: Check logging
@@ -139,7 +140,7 @@ class SpyderRemoteServer:
             SERVICE_TYPE,
             full_name,
             port=self._service_port,
-            properties=properties,
+            properties=properties,  # key / value 255 len
             addresses=[socket.inet_aton(get_ip())],
         )
         return self._service_info
@@ -163,17 +164,17 @@ class SpyderRemoteServer:
         self._current_properties["current_kernels"] = kernel_count
         # self._zeroconf.update_service(self.get_service_info(self._current_properties))
 
-    def start_kernel(self, env):
+    def start_kernel(self, prefix):
         """
         Start spyder-kernel located at environment prefix.
 
         Parameters
         ----------
-        env: str
+        prefix: str
             Full path to conda environment prefix.
         """
         # FIXME: Use conda activation scripts
-        python_path = f"{env}/bin/python"
+        python_path = f"{prefix}/bin/python"
         _, json_path = tempfile.mkstemp(suffix=".json")
         os.remove(json_path)
         cmd_args = [
@@ -183,9 +184,36 @@ class SpyderRemoteServer:
             f"--ip={get_ip()}",
             f"-f={json_path}",
         ]
-        kernel_proc = subprocess.Popen(cmd_args)
-        if env not in self._kernels:
-            self._kernels[env] = []
+
+        # To run as the guest user
+        user_name = self._config["guest_account"]
+        print(user_name)
+        pw_record = pwd.getpwnam(user_name)
+        user_name = pw_record.pw_name
+        print(user_name)
+        user_home_dir = pw_record.pw_dir
+        user_uid = pw_record.pw_uid
+        user_gid = pw_record.pw_gid
+        cwd = user_home_dir
+        env = os.environ.copy()
+        env["HOME"] = user_home_dir
+        env["LOGNAME"] = user_name
+        env["PWD"] = cwd
+        env["USER"] = user_name
+        try:
+            kernel_proc = subprocess.Popen(
+                cmd_args,
+                preexec_fn=demote(user_uid, user_gid),
+                cwd=cwd,
+                env=env,
+            )
+        except Exception as e:
+            print(e)
+
+        print("boo!")
+
+        if prefix not in self._kernels:
+            self._kernels[prefix] = []
 
         time.sleep(1)
         while True:
@@ -196,7 +224,7 @@ class SpyderRemoteServer:
                 break
             time.sleep(1)
 
-        self._kernels[env].append(
+        self._kernels[prefix].append(
             {"process": kernel_proc, "kernel_data": data, "json_path": json_path}
         )
         print(f"The kernel process id: {kernel_proc.pid}")
@@ -217,6 +245,7 @@ class SpyderRemoteServer:
             print("Daemon not enabled. Check configuration!")
             return
 
+        # self.start_kernel('/Users/goanpeca/miniconda3/envs/zeroconf')
         logger.info("Starting daemon!")
         logging.info("Starting daemon!")
         context = zmq.Context()

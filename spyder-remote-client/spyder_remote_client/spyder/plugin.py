@@ -73,6 +73,7 @@ class SpyderRemote(SpyderPluginV2):
 
     def on_close(self, cancellable=True):
         self.close_all_kernels()
+        return True
 
     # --- API
     # ------------------------------------------------------------------------

@@ -50,6 +50,9 @@ class RemoteConsoleDialog(QDialog):
         self.cancel_button = self._dialog_ui.cancelButton
         self.connect_button = self._dialog_ui.connectButton
         self.load_req_button = self._dialog_ui.findRequirements
+        self.feedback_label = self._dialog_ui.feedback
+
+        self.feedback_label.setText("")
 
         # Signals
         self.cancel_button.clicked.connect(self.close)
@@ -105,6 +108,8 @@ class RemoteConsoleDialog(QDialog):
         """
         Connect to selected kernel.
         """
+        self.feedback_label.setText("Starting remote kernel...")
+
         properties = self.host_combo.currentData()
         server_port = properties["server_port"]
         address = properties["address"]
@@ -126,6 +131,7 @@ class RemoteConsoleDialog(QDialog):
         self._kernels.append(prefix)
         self.sig_connect_to_kernel.emit(data)
         print("Received reply %s" % (data))
+        self.feedback_label.setText("")
         self.accept()
 
     def setup(self):
@@ -151,6 +157,7 @@ class RemoteConsoleDialog(QDialog):
         Update user and environment when a different host has been selected.
         """
         self.env_comvo.clear()
+        self.user_combo.clear()
         current_text = self.host_combo.currentText()
         properties = self.host_combo.currentData()
         if properties is not None:
