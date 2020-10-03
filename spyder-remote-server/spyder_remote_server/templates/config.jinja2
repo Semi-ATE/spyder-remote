@@ -20,7 +20,7 @@
 # The `enable` keyword will determine if the Spyder Kernels Daemon will start
 #
 # Notes:
-#  * if `enable` is supplied, it is presumed turned off!
+#  * if `enable` is not supplied, it is presumed turned off!
 #  * if `enable` can not be interpreted, it is presumed turned off!
 #
 enable = {{ config['enable'] }}
@@ -88,7 +88,7 @@ max_kernels = {{ config['max_kernels'] }}
 # Notes:
 #  * It **must** be a list
 #  * One can use a wildcard '*' in the list.
-#  * applictaion environments (starting with '_') can also be excluded here.
+#  * application environments (starting with '_') can also be excluded here.
 #  * If nothing is provided, the default value is presumed.
 #
 # Default value = ["base", "_*"]

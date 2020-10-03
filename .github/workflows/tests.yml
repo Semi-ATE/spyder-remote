@@ -1,5 +1,18 @@
 name: Run tests
-on: [push]
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'spyder-remote-server/**'
+      - 'spyder-remote-client/**'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'spyder-remote-server/**'
+      - 'spyder-remote-client/**'
+
 jobs:
   lint:
     runs-on: ubuntu-latest
