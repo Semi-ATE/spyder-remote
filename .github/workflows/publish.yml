@@ -29,7 +29,7 @@ jobs:
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
         cd spyder-remote-client
-        python -m twine upload dist/*
+        python -m twine upload dist/* --verbose
     - name: Build Server release artefacts
       run: |
         cd spyder-remote-server
@@ -42,4 +42,4 @@ jobs:
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
         cd spyder-remote-server
-        python -m twine upload dist/*
+        python -m twine upload dist/* --verbose

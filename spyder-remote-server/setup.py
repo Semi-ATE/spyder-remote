@@ -1,13 +1,15 @@
 # Copyright (c) Semi-ATE
 # Distributed under the terms of the MIT License
-# Standard library imports
+
+"""
+Spyder remote server setup.
+"""
+
 import ast
 import os
 
 from setuptools import find_packages
 from setuptools import setup
-
-# Third party imports
 
 # Constants
 HERE = os.path.abspath(os.path.dirname(__file__))
@@ -27,11 +29,20 @@ def get_version(module="spyder_remote_server"):
     return version
 
 
+def get_description():
+    """Get long description."""
+    with open(os.path.join(HERE, 'README.md'), 'r') as f:
+        data = f.read()
+    return data
+
+
 setup(
     name="spyder-remote-server",
     version=get_version(),
     url="https://github.com/Semi-ATE/spyder-remote/tree/master/spyder-remote-server",
-    description="",
+    description="Spyder remote server to connect to Spyder kernels via zeroconf.",
+    long_description=get_description(),
+    long_description_content_type='text/markdown',
     packages=find_packages(exclude=["contrib", "docs", "tests*"]),
     install_requires=[
         # "netifaces",
