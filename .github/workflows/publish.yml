@@ -43,3 +43,14 @@ jobs:
       run: |
         cd spyder-remote-server
         python -m twine upload dist/* --verbose
+    - name: Create Release
+      id: create_release
+      uses: ncipollo/release-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag: ${{ github.event.release.tag_name }}
+        name: Release ${{ github.event.release.tag_name }}
+        artifacts: ${{ env.CURRENT_LOCALE_DIR }}/spyder-remote-client/dist/*,${{ env.CURRENT_LOCALE_DIR }}/spyder-remote-sever/dist/*
+        body: Release ${{ github.event.release.tag_name }}
+        token: ${{ secrets.GITHUB_TOKEN }}
