@@ -1,9 +1,8 @@
 # Release
 
-Examples of using `bump2version`.
-
 ```bash
-bump2version --dry-run --verbose patch
-bump2version --dry-run --verbose minor
-bump2version --dry-run --verbose major
+bump2version release --tag --verbose
+bump2version patch --verbose
+git push upstream master
+git push upstream --tags
 ```
