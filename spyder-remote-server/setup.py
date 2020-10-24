@@ -31,7 +31,7 @@ def get_version(module="spyder_remote_server"):
 
 def get_description():
     """Get long description."""
-    with open(os.path.join(HERE, 'README.md'), 'r') as f:
+    with open(os.path.join(HERE, "README.md"), "r") as f:
         data = f.read()
     return data
 
@@ -42,7 +42,7 @@ setup(
     url="https://github.com/Semi-ATE/spyder-remote/tree/master/spyder-remote-server",
     description="Spyder remote server to connect to Spyder kernels via zeroconf.",
     long_description=get_description(),
-    long_description_content_type='text/markdown',
+    long_description_content_type="text/markdown",
     packages=find_packages(exclude=["contrib", "docs", "tests*"]),
     install_requires=[
         # "netifaces",

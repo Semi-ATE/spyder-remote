@@ -1,5 +1,8 @@
 # spyder-remote
 
+![Run tests](https://github.com/Semi-ATE/spyder-remote/workflows/Run%20tests/badge.svg?branch=master)
+![Build and Deploy Docs](https://github.com/Semi-ATE/spyder-remote/workflows/Build%20and%20Deploy%20Docs/badge.svg)
+
 `spyder-remote` is a project to add the ability to spyder to recognize (over [zeroconf](https://github.com/jstasiak/python-zeroconf)) what machines are in the local network that can start a `spyder` `console` to which `spyder` can then (automatically) connect.
 
 Bundeled with this capability there is also the capability to manage conda environment on the remote host.
