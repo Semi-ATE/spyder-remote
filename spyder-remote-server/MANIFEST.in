@@ -1,4 +1,5 @@
 recursive-include requirements *.txt
+recursive-include requirements *.txt
 recursive-exclude tests *.py
 recursive-include spyder_remote_server *.bat
 recursive-include spyder_remote_server *.jinja2
