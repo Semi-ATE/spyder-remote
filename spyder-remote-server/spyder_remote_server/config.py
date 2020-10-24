@@ -1,7 +1,9 @@
 # Copyright (c) Semi-ATE
 # Distributed under the terms of the MIT License
 """
+Load and parse spyder-remote configuration.
 """
+
 import ast
 import configparser
 import multiprocessing
@@ -45,7 +47,7 @@ DEFAULT_CONFIG = {
     #  * if the guest account needs an empty string password, the format is "user:"
     #  * if the guest account doesn't need a password, the format is "user"
     #
-    "guest_account": None,
+    "guest_account": "sct",
     ##############################################################################
     # The `guest_can_manage_environments` keyword determines if a `guest`
     # is allowed to create/modify (guest) environments.

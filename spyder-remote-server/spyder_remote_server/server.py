@@ -1,5 +1,6 @@
 # Copyright (c) Semi-ATE
 # Distributed under the terms of the MIT License
+
 """
 Spyder remote server in charge of launching the zeroconf service and provide
 a socket via ZMQ to provide spyder-kernels start/stop.
@@ -187,10 +188,8 @@ class SpyderRemoteServer:
 
         # To run as the guest user
         user_name = self._config["guest_account"]
-        print(user_name)
         pw_record = pwd.getpwnam(user_name)
         user_name = pw_record.pw_name
-        print(user_name)
         user_home_dir = pw_record.pw_dir
         user_uid = pw_record.pw_uid
         user_gid = pw_record.pw_gid
@@ -207,10 +206,8 @@ class SpyderRemoteServer:
                 cwd=cwd,
                 env=env,
             )
-        except Exception as e:
-            print(e)
-
-        print("boo!")
+        except Exception as error:
+            print(error)
 
         if prefix not in self._kernels:
             self._kernels[prefix] = []
