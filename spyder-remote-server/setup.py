@@ -48,6 +48,7 @@ setup(
         # "netifaces",
         # "psutil",
         "click",
+        "daemoniker",
         "jinja2",
         "zeroconf",
     ],

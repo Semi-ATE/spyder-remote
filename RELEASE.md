@@ -11,11 +11,19 @@ git push upstream master --tags
 ### Delete remote tag
 
 ```shell
-git push --delete origin tagname
+git push --delete upstream v0.0.2
 ```
 
 ### Delete local tag
 
 ```shell
-git tag --delete <tagname>
+git tag --delete v0.0.2
+```
+
+### Reset: Careful
+ 
+```shell
+git reset HEAD~2 --hard
+git push origin master --force
+git push upstream master --force
 ```

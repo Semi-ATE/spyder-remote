@@ -36,7 +36,7 @@ jobs:
         check-manifest -v
         python setup.py sdist bdist_wheel
         python -m twine check dist/*
-    - name: Publish Client release
+    - name: Publish Server release
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD_SERVER }}
