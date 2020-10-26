@@ -57,4 +57,5 @@ setup(
             "spyder-remote-server = spyder_remote_server.cli:main",
         ]
     },
+    include_package_data=True,
 )
