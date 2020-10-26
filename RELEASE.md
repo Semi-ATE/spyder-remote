@@ -1,5 +1,19 @@
 # Release
 
+## 1. Run pre-commits
+
+```bash
+pre-commit run -a
+```
+
+## 2. Run check-manifest
+
+```bash
+check-manifest --verbose
+```
+
+## 3. Bumversion and create tags
+
 Make sure you are on the repo root!
 
 ```bash
@@ -8,7 +22,7 @@ bump2version patch --verbose
 git push upstream master --tags
 ```
 
-## Some extra info on deleting tags!
+## Some extra info on deleting tags
 
 ### Delete remote tag
 
