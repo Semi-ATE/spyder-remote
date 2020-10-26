@@ -13,7 +13,7 @@ import socket
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 from spyder_remote_server.constants import AUTO
-from spyder_remote_server.templates import CONFIG_TEMPLATE_PATH
+from spyder_remote_server.templates import CONFIG_TEMPLATE
 
 # Constants
 DEFAULT_CONFIG = {
@@ -126,7 +126,7 @@ def create_config(guest, cores):
     config["enable"] = True
 
     env = Environment(loader=PackageLoader("spyder_remote_server", "templates"))
-    template = env.get_template(CONFIG_TEMPLATE_PATH)
+    template = env.get_template(CONFIG_TEMPLATE)
     data = template.render(config=config)
 
     with open(config_path(), "w") as fh:
