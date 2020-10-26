@@ -1,5 +1,7 @@
 # Release
 
+Make sure you are on the repo root!
+
 ```bash
 bump2version release --tag --verbose
 bump2version patch --verbose
@@ -21,7 +23,7 @@ git tag --delete v0.0.2
 ```
 
 ### Reset: Careful
- 
+
 ```shell
 git reset HEAD~2 --hard
 git push origin master --force
