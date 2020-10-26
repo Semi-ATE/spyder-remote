@@ -26,7 +26,7 @@ jobs:
     - name: Publish Server release
       env:
         TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD_SERVER }}
       run: |
         cd spyder-remote-client
         python -m twine upload dist/* --verbose
@@ -39,7 +39,7 @@ jobs:
     - name: Publish Client release
       env:
         TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD_CLIENT }}
       run: |
         cd spyder-remote-server
         python -m twine upload dist/* --verbose
