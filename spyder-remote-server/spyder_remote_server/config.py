@@ -16,6 +16,7 @@ from spyder_remote_server.constants import AUTO
 from spyder_remote_server.templates import CONFIG_TEMPLATE
 
 # Constants
+INIFILE = "spyder-remote-server.ini"
 DEFAULT_CONFIG = {
     ##############################################################################
     # The `enable` keyword will determine if the Spyder Kernels Daemon will start
@@ -102,11 +103,15 @@ def config_path():
     str:
         Path to configuration file.
     """
-    path = os.path.expanduser("~/.spyder-remote")
+    if sys.platform.startswith("linux"):
+        path = "/etc"
+    else:
+        path = os.path.expanduser("~/.spyder-remote-server")
+
     if not os.path.isdir(path):
         os.makedirs(path)
 
-    return os.path.join(path, "spyder-remote.ini")
+    return os.path.join(path, INIFILE)
 
 
 def create_config(guest, cores):
