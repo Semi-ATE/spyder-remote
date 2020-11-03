@@ -16,6 +16,16 @@ from contextlib import closing
 WIN = os.name == "nt"
 
 
+def is_base_conda():
+    """Check if current env is base enviroment."""
+    return True
+
+
+def is_root():
+    """Check that current process is running as `root`."""
+    return os.geteuid() == 0
+
+
 def demote(user_uid, user_gid):
     """
     Callback to use with subprocess `preexec_fn` to change the user running

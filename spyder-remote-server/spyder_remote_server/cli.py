@@ -12,6 +12,7 @@ import click
 from daemoniker import send, SIGINT
 from spyder_remote_server.api import get_cpu_count, install_daemon, uninstall_daemon
 from spyder_remote_server.constants import AUTO, PID_FILE_PATH
+from spyder_remote_server.utils import is_root
 
 # Constants
 HERE = os.path.abspath(os.path.dirname(__file__))
@@ -40,6 +41,10 @@ def install(guest, cores):
 
     Cores: and it will set the maximum numbers of consoles this machine will provide.
     """
+    if not is_root():
+        click.echo("Must install daemon as root", err=True)
+        sys.exit(1)
+
     # click.echo("Install the server daemon")
     new_cores = get_cpu_count(cores)
     if cores != new_cores:

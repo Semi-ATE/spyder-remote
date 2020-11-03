@@ -45,11 +45,12 @@ setup(
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=["contrib", "docs", "tests*"]),
     install_requires=[
-        # "netifaces",
-        # "psutil",
         "click",
         "daemoniker",
         "jinja2",
+        # "psutil",
+        "pyzmq",
+        # "netifaces",
         "zeroconf",
     ],
     entry_points={
