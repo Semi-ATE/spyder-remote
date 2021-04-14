@@ -10,6 +10,7 @@ import multiprocessing
 import os
 import platform
 import socket
+import sys
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 from spyder_remote_server.constants import AUTO
