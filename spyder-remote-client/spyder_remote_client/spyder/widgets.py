@@ -53,6 +53,7 @@ class RemoteConsoleDialog(QDialog):
         self.feedback_label = self._dialog_ui.feedback
 
         self.feedback_label.setText("")
+        self.setWindowTitle("Connect to remote kernel")
 
         # Signals
         self.cancel_button.clicked.connect(self.close)

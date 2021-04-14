@@ -6,7 +6,7 @@ Spyder Remote Container.
 
 from qtpy.QtCore import Signal
 from spyder.api.translations import get_translation
-from spyder.api.widgets import PluginMainContainer
+from spyder.api.widgets.main_container import PluginMainContainer
 
 from spyder_remote_client.spyder.widgets import RemoteConsoleDialog
 
@@ -15,10 +15,9 @@ _ = get_translation("spyder_remote_client")
 
 
 class SpyderRemoteContainer(PluginMainContainer):
-    DEFAULT_OPTIONS = {}
 
-    def __init__(self, name, plugin, parent=None, options=DEFAULT_OPTIONS):
-        super().__init__(name, plugin, parent=parent, options=options)
+    def __init__(self, name, plugin, parent=None):
+        super().__init__(name, plugin, parent=parent)
 
         self._dialog = RemoteConsoleDialog(self)
         self._dialog.sig_connect_to_kernel.connect(self.sig_connect_to_kernel)
@@ -39,7 +38,7 @@ class SpyderRemoteContainer(PluginMainContainer):
 
     # --- PluginMainContainer API
     # ------------------------------------------------------------------------
-    def setup(self, options=DEFAULT_OPTIONS):
+    def setup(self):
         pass
 
     def on_option_update(self, options, value):

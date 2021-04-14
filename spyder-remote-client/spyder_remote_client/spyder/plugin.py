@@ -31,7 +31,7 @@ class SpyderRemote(SpyderPluginV2):
     """
 
     NAME = "spyder_remote"
-    REQUIRES = []
+    REQUIRES = [Plugins.Shortcuts]
     CONTAINER_CLASS = SpyderRemoteContainer
     CONF_SECTION = NAME
 
