@@ -264,7 +264,6 @@ class SpyderRemoteServer:
 
         while self._running:
             self._busy = True
-            # Wait for next request from client
             message = socket.recv()
 
             try:
@@ -273,7 +272,6 @@ class SpyderRemoteServer:
                 reply = json.dumps({"error": str(err)})
                 print(err)
 
-            # reply = self.process_request(message)
             socket.send_string(reply)
             self._busy = False
 
@@ -384,7 +382,7 @@ class SpyderRemoteServer:
                     print(f"Killing env: {env}")
                     logger.info(f"Killing env: {env}")
                     proc.terminate()
-                    stdout, stderr = proc.communicate()
+                    _stdout, _stderr = proc.communicate()
                 except Exception as e:
                     logger.error(str(e))
 

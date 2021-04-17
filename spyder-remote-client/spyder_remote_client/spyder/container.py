@@ -61,3 +61,15 @@ class SpyderRemoteContainer(PluginMainContainer):
         Close all kernels started on this session.
         """
         self._dialog.close_all_kernels()
+
+    def close_services(self):
+        """
+        Close zeroconf services.
+        """
+        if self._dialog:
+            self._dialog.close()
+
+    @property
+    def kernels(self):
+        """Kernels started by Spyder remote client."""
+        return self._dialog._kernels
