@@ -15,7 +15,6 @@ _ = get_translation("spyder_remote_client")
 
 
 class SpyderRemoteContainer(PluginMainContainer):
-
     def __init__(self, name, plugin, parent=None):
         super().__init__(name, plugin, parent=parent)
 

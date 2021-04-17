@@ -47,8 +47,8 @@ setup(
     install_requires=[
         "netifaces",
         "psutil",
-        # "spyder",
-        "zeroconf",
+        "spyder >=5.0.1",
+        "zeroconf <=0.27",
     ],
     entry_points={
         "spyder.plugins": [

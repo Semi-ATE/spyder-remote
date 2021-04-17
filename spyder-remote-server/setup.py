@@ -51,7 +51,7 @@ setup(
         # "psutil",
         "pyzmq",
         # "netifaces",
-        "zeroconf",
+        "zeroconf <=0.27",
     ],
     entry_points={
         "console_scripts": [
