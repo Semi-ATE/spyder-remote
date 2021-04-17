@@ -159,7 +159,7 @@ class SpyderRemoteServer:
         Update service with updated information.
         """
         kernel_count = 0
-        for env, kernel_data in self._kernels.items():
+        for _env, kernel_data in self._kernels.items():
             kernel_count += len(kernel_data)
 
         self._current_properties["current_kernels"] = kernel_count
@@ -188,7 +188,16 @@ class SpyderRemoteServer:
 
         # To run as the guest user
         user_name = self._config["guest_account"]
-        pw_record = pwd.getpwnam(user_name)
+
+        try:
+            pw_record = pwd.getpwnam(user_name)
+        except KeyError:
+            print(f"User `{user_name}` not found!")
+            return
+        except Exception as err:
+            print(f"Exception:\n {err}")
+            return
+
         user_name = pw_record.pw_name
         user_home_dir = pw_record.pw_dir
         user_uid = pw_record.pw_uid
@@ -257,7 +266,14 @@ class SpyderRemoteServer:
             self._busy = True
             # Wait for next request from client
             message = socket.recv()
-            reply = self.process_request(message)
+
+            try:
+                reply = self.process_request(message)
+            except Exception as err:
+                reply = json.dumps({"error": str(err)})
+                print(err)
+
+            # reply = self.process_request(message)
             socket.send_string(reply)
             self._busy = False
 

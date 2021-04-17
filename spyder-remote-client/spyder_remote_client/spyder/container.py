@@ -52,6 +52,7 @@ class SpyderRemoteContainer(PluginMainContainer):
         """
         Connect to a remote console.
         """
+        self._dialog.clear()
         self._dialog.setup()
         self._dialog.show()
 

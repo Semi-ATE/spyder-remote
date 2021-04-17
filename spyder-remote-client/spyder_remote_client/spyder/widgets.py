@@ -5,6 +5,7 @@ Spyder Remote Widgets.
 """
 
 import json
+import time
 
 import zmq
 from qtpy.QtCore import Signal
@@ -60,12 +61,19 @@ class RemoteConsoleDialog(QDialog):
         self.connect_button.clicked.connect(self.connect)
         self.host_combo.currentIndexChanged.connect(self.change_host)
 
+        self._listener.sig_service_added.connect(self.service_updated)
+        self._listener.sig_service_removed.connect(self.service_updated)
+        self._listener.sig_service_updated.connect(self.service_updated)
+
         # Start zeroconf service browser
         self._browser = ServiceBrowser(
             self._zeroconf_instance,
             SERVICE_TYPE,
             self._listener,
         )
+
+    def service_updated(self, zeroconf, service_type, service_name):
+        self.setup()
 
     def close(self):
         """
@@ -84,7 +92,7 @@ class RemoteConsoleDialog(QDialog):
         """
         hosts = self._listener.get_hosts()
         if self._kernels:
-            for host, properties in hosts.items():
+            for _host, properties in hosts.items():
                 server_port = properties["server_port"]
                 address = properties["address"]
                 context = zmq.Context()
@@ -109,7 +117,7 @@ class RemoteConsoleDialog(QDialog):
         """
         Connect to selected kernel.
         """
-        self.feedback_label.setText("Starting remote kernel...")
+        self.feedback_label.setText("Requesting new remote kernel...")
 
         properties = self.host_combo.currentData()
         server_port = properties["server_port"]
@@ -117,32 +125,59 @@ class RemoteConsoleDialog(QDialog):
         context = zmq.Context()
 
         #  Socket to talk to server
-        # print("Connecting to hello world server…")
         socket = context.socket(zmq.REQ)
-        socket.connect(f"tcp://{address}:{server_port}")
+        full_address = f"tcp://{address}:{server_port}"
+        socket.setsockopt(zmq.LINGER, 0)
+        socket.connect(full_address)
         prefix = self.env_comvo.currentData()
         data = {"kernel": {"command": "start", "prefix": prefix}}
-        message = json.dumps(data)
-        print("Sending request %s …" % message)
-        socket.send_string(message)
+        send_message = json.dumps(data)
+        received_message = None
 
-        #  Get the reply.
-        message = socket.recv()
-        data = json.loads(message.decode("utf-8"))
-        self._kernels.append(prefix)
-        self.sig_connect_to_kernel.emit(data)
-        print("Received reply %s" % (data))
+        if socket.poll(timeout=1000, flags=zmq.POLLOUT) != 0:
+            print("Sending request %s …" % send_message)
+            socket.send_string(send_message, flags=zmq.NOBLOCK)
+            if socket.poll(timeout=5000, flags=zmq.POLLIN) != 0:
+                try:
+                    received_message = socket.recv(flags=zmq.NOBLOCK)
+                except Exception:
+                    pass
+
+        if received_message:
+            print("RECEIVED", received_message)
+            self.feedback_label.setText("Starting remote kernel...")
+            data = json.loads(received_message.decode("utf-8"))
+
+            error = data.get("error")
+            if error:
+                self.feedback_label.setText("Spyder remote server error")
+                raise Exception(f"Spyder remote server error:\n\n{error}")
+            else:
+                self._kernels.append(prefix)
+                print("Received reply %s" % (data))
+                self.sig_connect_to_kernel.emit(data)
+                socket.disconnect(full_address)
+                socket.close(linger=0)
+                context.term()
+                self.accept()
+        else:
+            self.clear()
+            self.feedback_label.setText(f"Spyder remote server not responding!")
+            self.connect_button.setEnabled(False)
+            socket.disconnect(full_address)
+            socket.close(linger=0)
+            context.term()
+
+    def clear(self):
+        self.host_combo.clear()
+        self.user_combo.clear()
+        self.env_comvo.clear()
         self.feedback_label.setText("")
-        self.accept()
 
     def setup(self):
         """
         Setup the comboboxes.
         """
-        self.host_combo.clear()
-        self.user_combo.clear()
-        self.env_comvo.clear()
-
         self.req.setVisible(False)
         self.req_label.setVisible(False)
         self.load_req_button.setVisible(False)
@@ -150,8 +185,11 @@ class RemoteConsoleDialog(QDialog):
         self.password.setDisabled(True)
 
         hosts = self._listener.get_hosts()
-        for host, properties in hosts.items():
+
+        for _host, properties in hosts.items():
             self.host_combo.addItem(properties["name"], properties)
+
+        self.connect_button.setEnabled(bool(hosts))
 
     def change_host(self):
         """
@@ -159,7 +197,7 @@ class RemoteConsoleDialog(QDialog):
         """
         self.env_comvo.clear()
         self.user_combo.clear()
-        current_text = self.host_combo.currentText()
+        _current_text = self.host_combo.currentText()
         properties = self.host_combo.currentData()
         if properties is not None:
             self.user_combo.addItem(properties["guest_account"])
