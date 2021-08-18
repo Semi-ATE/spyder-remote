@@ -20,8 +20,7 @@ jobs:
           mamba-version: "*"
           show-channel-urls: true 
       - name: Setup dependencies
-        run: |
-          mamba install -n test --file requirements/CD.txt -c conda-forge -y -q
+        run: mamba install -n test --file requirements.txt -c conda-forge -y -q
       - name: tag to version
         run: |
           echo "# Copyright (c) Semi-ATE" > spyder-remote-client/spyder-remote-client/__init__.py
