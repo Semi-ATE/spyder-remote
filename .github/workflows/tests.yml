@@ -26,9 +26,9 @@ jobs:
       - name: Install lint dependencies
         run: |
           pip install pre-commit check-manifest
-      - name: Check pre commits
-        run: |
-          pre-commit run -a
+#       - name: Check pre commits
+#         run: |
+#           pre-commit run -a
       - name: Check manifest Server
         run: |
           cd spyder-remote-server
