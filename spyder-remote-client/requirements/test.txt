@@ -1,3 +1,4 @@
+twine
 check-manifest
 pytest
 pytest-cov
