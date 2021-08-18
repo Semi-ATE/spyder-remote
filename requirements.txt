@@ -1,0 +1,7 @@
+netifaces
+psutil
+zeroconf
+twine
+check-manifest
+pytest
+pytest-cov
