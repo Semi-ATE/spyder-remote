@@ -5,3 +5,6 @@ twine
 check-manifest
 pytest
 pytest-cov
+myst-parser
+sphinx
+sphinx_book_theme
