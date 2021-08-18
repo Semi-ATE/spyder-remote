@@ -10,8 +10,15 @@ import tempfile
 import uuid
 
 from qtpy.QtGui import QIcon
+
+# from spyder.api.plugins import Plugins, SpyderDockablePlugin
+# from spyder.api.plugin_registration.decorators import on_plugin_available
+# from spyder.config.base import get_translation
+
 from spyder.api.plugins import Plugins, SpyderPluginV2
 from spyder.api.translations import get_translation
+from spyder.api.plugin_registration.decorators import on_plugin_available
+
 from spyder_remote_client.spyder.container import SpyderRemoteContainer
 
 # Localization
@@ -33,7 +40,7 @@ class SpyderRemote(SpyderPluginV2):
     """
 
     NAME = "spyder_remote"
-    REQUIRES = [Plugins.Shortcuts, Plugins.IPythonConsole]
+    REQUIRES = [Plugins.IPythonConsole]
     CONTAINER_CLASS = SpyderRemoteContainer
     CONF_SECTION = NAME
 
@@ -48,7 +55,7 @@ class SpyderRemote(SpyderPluginV2):
     def get_icon(self):
         return QIcon()
 
-    def register(self):
+    def on_initialize(self):
         container = self.get_container()
         self.new_remote_client_action = self.create_action(
             SpyderRemoteActions.NewRemoteConsole,
@@ -62,12 +69,15 @@ class SpyderRemote(SpyderPluginV2):
             triggered=self.close_all_kernels,
             register_shortcut=True,
         )
-        main_consoles_menu = self.main.consoles_menu_actions
-        main_consoles_menu.insert(0, self.new_remote_client_action)
-        main_consoles_menu.insert(1, self.close_all_kernels_action)
         container.sig_connect_to_kernel.connect(self.start_remote_kernel)
         container.sig_connect_to_kernel.connect(lambda x: self.update_actions())
         self.close_all_kernels_action.setEnabled(False)
+
+    @on_plugin_available(plugin=Plugins.IPythonConsole)
+    def on_IPythonConsole_available(self):
+        main_consoles_menu = self.main.consoles_menu_actions
+        main_consoles_menu.insert(0, self.new_remote_client_action)
+        main_consoles_menu.insert(1, self.close_all_kernels_action)
 
     def on_close(self, cancellable=True):
         self.close_all_kernels()
