@@ -1,0 +1,108 @@
+name: CD
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Setup miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest" 
+          python-version: "3.8"
+          channel-priority: "strict"
+          channels: "conda-forge"  
+          mamba-version: "*"
+          show-channel-urls: true 
+      - name: Setup dependencies
+        run: |
+          mamba install -n test --file requirements/CD.txt -c conda-forge -y -q
+      - name: tag to version
+        run: |
+          echo "# Copyright (c) Semi-ATE" > spyder-remote-client/spyder-remote-client/__init__.py
+          echo "# Distributed under the terms of the MIT License" >> spyder-remote-client/spyder-remote-client/__init__.py
+          echo "__version__='${GITHUB_REF#refs/*/}'" >> spyder-remote-client/spyder-remote-client/__init__.py
+          echo "# Copyright (c) Semi-ATE" > spyder-remote-server/spyder-remote-server/__init__.py
+          echo "# Distributed under the terms of the MIT License" >> spyder-remote-server/spyder-remote-server/__init__.py
+          echo "__version__='${GITHUB_REF#refs/*/}'" >> spyder-remote-server/spyder-remote-server/__init__.py
+
+      - name: Create spyder-remote-client package
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          python setup.py sdist 
+      - name: Check spyder-remote-client package
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          twine check dist/*
+      - name: Check spyder-remote-client manifest
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          check-manifest  
+      - name: Check spyder-remote-client tests
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          pytest tests/ --cov=spyder_remote_client
+      - name: Upload spyder-remote-client to release assets
+        uses: alexellis/upload-assets@0.2.3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          asset_paths: '["spyder-remote-client/dist/spyder-remote-client*"]'
+ 
+      - name: Create spyder-remote-server package
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-server
+          python setup.py sdist 
+      - name: Check spyder-remote-server package
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-server
+          twine check dist/*
+      - name: Check spyder-remote-server manifest
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-server
+          check-manifest  
+      - name: Check spyder-remote-server tests
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-server
+          pytest tests/ --cov=spyder_remote_client
+      - name: Upload spyder-remote-server to release assets
+        uses: alexellis/upload-assets@0.2.3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          asset_paths: '["spyder-remote-server/dist/spyder-remote-server*"]'
+
+#documentation ?
+
+#      - name: Upload spyder-remote-client to PyPI
+#         env:
+#           TWINE_USERNAME: __token__
+#           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+#         run: |
+#           cd spyder-remote-client
+#           python -m twine upload dist/*
+
+#      - name: Upload spyder-remote-server to PyPI
+#         env:
+#           TWINE_USERNAME: __token__
+#           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+#         run: |
+#           cd spyder-remote-server
+#           python -m twine upload dist/*
+
+
+
+
