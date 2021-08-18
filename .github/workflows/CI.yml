@@ -48,7 +48,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          path: dist/*
+          path: spyder-remote-client/dist/*
           name: spyder-remote-client-*.tar.gz
       
   server:
@@ -93,5 +93,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          path: dist/*
+          path: spyder-remote-server/dist/*
           name: spyder-remote-server-*.tar.gz
