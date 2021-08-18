@@ -7,4 +7,4 @@ pytest
 pytest-cov
 myst-parser
 sphinx
-sphinx_book_theme
+#sphinx_book_theme
