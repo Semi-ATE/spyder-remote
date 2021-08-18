@@ -42,11 +42,11 @@ jobs:
         run: |
           cd spyder-remote-client
           pytest tests/ --cov=spyder_remote_client
-#       - name: Upload artifact
-#         uses: actions/upload-artifact@v2
-#         with:
-#           path: dist/*
-#           name:  
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: dist/*
+          name: spyder-remote-client-*.tar.gz
       
   server:
     runs-on: ubuntu-latest
@@ -87,8 +87,8 @@ jobs:
         run: |
           cd spyder-remote-server
           pytest tests/ --cov=spyder_remote_server
-#       - name: Upload artifact
-#         uses: actions/upload-artifact@v2
-#         with:
-#           path: dist/*
-#           name:  
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: dist/*
+          name: spyder-remote-server-*.tar.gz
