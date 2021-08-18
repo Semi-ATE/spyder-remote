@@ -1,0 +1,83 @@
+name: CI
+
+on: [push, workflow_dispatch]
+
+jobs:
+  client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Setup miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest" 
+          python-version: "3.8"
+          channel-priority: "strict"
+          channels: "conda-forge"  
+          mamba-version: "*"
+          show-channel-urls: true 
+      - name: Setup dependencies
+        run: |
+          cd spyder-remote-client
+          mamba install -n test --file requirements/run.txt -c conda-forge -y -q
+          mamba install -n test --file requirements/test.txt -c conda-forge -u -q
+      - name: Create package
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          python setup.py sdist 
+      - name: Check package
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          twine check dist/*
+      - name: Check manifest
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          check-manifest  
+      - name: Run tests
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          pytest tests/ --cov=spyder_remote_client
+  server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Setup miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest" 
+          python-version: "3.8"
+          channel-priority: "strict"
+          channels: "conda-forge"  
+          mamba-version: "*"
+          show-channel-urls: true 
+      - name: Setup dependencies
+        run: |
+          cd spyder-remote-server
+          mamba install -n test --file requirements/run.txt -c conda-forge -y -q
+          mamba install -n test --file requirements/test.txt -c conda-forge -u -q
+      - name: Create package
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-server
+          python setup.py sdist 
+      - name: Check package
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-server
+          twine check dist/*
+      - name: Check manifest
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-server
+          check-manifest  
+      - name: Run tests
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-server
+          pytest tests/ --cov=spyder_remote_server
