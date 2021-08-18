@@ -1,9 +1,9 @@
 name: CI
 
-on: [push, workflow_dispatch]
+on: [push]
 
 jobs:
-  client:
+  spyder-remote-client:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
@@ -42,16 +42,13 @@ jobs:
         run: |
           cd spyder-remote-client
           pytest tests/ --cov=spyder_remote_client
-      - name: check results
-        shell: bash -l {0}
-        run: find . 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           path: spyder-remote-client/dist/*
           name: spyder-remote-client-0.0.0.tar.gz
       
-  server:
+  spyder-remote-server:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
