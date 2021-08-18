@@ -30,6 +30,7 @@ jobs:
       - name: Check package
         shell: bash -l {0}
         run: |
+          set | grep CONDA
           cd spyder-remote-client
           twine check dist/*
       - name: Check manifest
