@@ -26,6 +26,7 @@ jobs:
       - name: Install lint dependencies
         run: |
           pip install pre-commit check-manifest
+# take black out
 #       - name: Check pre commits
 #         run: |
 #           pre-commit run -a
