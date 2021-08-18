@@ -42,6 +42,9 @@ jobs:
         run: |
           cd spyder-remote-client
           pytest tests/ --cov=spyder_remote_client
+      - name: check results
+        shell: bash -l {0}
+        run: find . 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
