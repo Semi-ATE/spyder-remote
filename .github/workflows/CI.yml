@@ -19,9 +19,7 @@ jobs:
           show-channel-urls: true 
       - name: Setup dependencies
         run: |
-          cd spyder-remote-client
-          mamba install -n test --file requirements/run.txt -c conda-forge -y -q
-          mamba install -n test --file requirements/test.txt -c conda-forge -y -q
+          mamba install -n test --file requirements.txt -c conda-forge -y -q
       - name: Create package
         shell: bash -l {0}
         run: |
@@ -64,9 +62,7 @@ jobs:
           show-channel-urls: true 
       - name: Setup dependencies
         run: |
-          cd spyder-remote-server
-          mamba install -n test --file requirements/run.txt -c conda-forge -y -q
-          mamba install -n test --file requirements/test.txt -c conda-forge -y -q
+          mamba install -n test --file requirements.txt -c conda-forge -y -q
       - name: Create package
         shell: bash -l {0}
         run: |
