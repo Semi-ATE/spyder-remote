@@ -5,7 +5,7 @@
 [![Supported Python versions](https://img.shields.io/badge/python-%3E%3D3.7-black)](https://www.python.org/downloads/)
 
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Semi-ATE/spyder-remote?color=blue&label=GitHub%20Release&sort=semver)](https://github.com/Semi-ATE/spyder-remote/releases)
-[![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Semi-ATE/spyder-remote/latest)](https://github.com/Semi-ATE/spyder-remote)
+[![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Semi-ATE/spyder-remote/latest)](https://github.com/Semi-ATE/spyder-remote/graphs/commit-activity)
 [![CI](https://github.com/Semi-ATE/spyder-remote/workflows/CI/badge.svg)](https://github.com/Semi-ATE/spyder-remote/actions?query=workflow%3ACI)
 [![CD](https://github.com/Semi-ATE/spyder-remote/workflows/CD/badge.svg)](https://github.com/Semi-ATE/spyder-remote/actions?query=workflow%3ACD)
 [![GitHub issues](https://img.shields.io/github/issues/Semi-ATE/spyder-remote)](https://github.com/Semi-ATE/spyder-remote/issues)
