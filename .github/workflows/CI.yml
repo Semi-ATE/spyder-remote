@@ -10,20 +10,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Install mamba & environment
         uses: mamba-org/provision-with-micromamba@v10
-  
-#       - name: Setup miniconda
-#         uses: conda-incubator/setup-miniconda@v2
-#         with:
-#           miniconda-version: "latest" 
-#           python-version: "3.8"
-#           channel-priority: "strict"
-#           channels: "conda-forge"  
-#           mamba-version: "*"
-#           show-channel-urls: true 
-#       - name: Setup dependencies
-#         run: |
-#           mamba install -n test --file requirements/build_test_deploy.txt -c conda-forge -y -q
-
       - name: Create package
         shell: bash -l {0}
         run: |
@@ -57,21 +43,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Install mamba & environment
         uses: mamba-org/provision-with-micromamba@v10
-
-#       - name: Setup miniconda
-#         uses: conda-incubator/setup-miniconda@v2
-#         with:
-#           miniconda-version: "latest" 
-#           python-version: "3.8"
-#           channel-priority: "strict"
-#           channels: "conda-forge"  
-#           mamba-version: "*"
-#           show-channel-urls: true 
-#       - name: Setup dependencies
-#         run: |
-#           mamba install -n test --file requirements/build_test_deploy.txt -c conda-forge -y -q
-
-
       - name: Create package
         shell: bash -l {0}
         run: |
