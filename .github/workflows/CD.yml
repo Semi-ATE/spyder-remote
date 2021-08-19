@@ -22,8 +22,9 @@ jobs:
       - name: Setup dependencies
         run: |
           mamba install -n test --file requirements/build_test_deploy.txt -c conda-forge -y -q
-          pip install -r requirements/docs.txt
+#          pip install -r requirements/docs.txt
       - name: tag to version
+        shell: bash -l {0}
         run: |
           pwd
           echo "# Copyright (c) Semi-ATE" > spyder-remote-client/spyder-remote-client/__init__.py
