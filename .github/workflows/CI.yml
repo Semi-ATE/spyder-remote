@@ -20,6 +20,7 @@ jobs:
       - name: Setup dependencies
         run: |
           mamba install -n test --file requirements/build_test_deploy.txt -c conda-forge -y -q
+          mamba env export
       - name: Create package
         shell: bash -l {0}
         run: |
