@@ -27,16 +27,21 @@ jobs:
         shell: bash -l {0}
         run: |
           pwd
-          cd spyder-remote-client
+          cd spyder-remote-client/spyder-remote-client
           pwd
-          ls -laR
-          echo "# Copyright (c) Semi-ATE" > spyder-remote-client/spyder-remote-client/__init__.py
-          echo "# Distributed under the terms of the MIT License" >> spyder-remote-client/spyder-remote-client/__init__.py
-          echo "__version__='${GITHUB_REF#refs/*/}'" >> spyder-remote-client/spyder-remote-client/__init__.py
+          ls -la
+          echo "# Copyright (c) Semi-ATE" > __init__.py
+          echo "# Distributed under the terms of the MIT License" >> __init__.py
+          echo "__version__='${GITHUB_REF#refs/*/}'" >> __init__.py
+          cd ../..
           cat spyder-remote-client/spyder-remote-client/__init__.py
-          echo "# Copyright (c) Semi-ATE" > spyder-remote-server/spyder-remote-server/__init__.py
-          echo "# Distributed under the terms of the MIT License" >> spyder-remote-server/spyder-remote-server/__init__.py
-          echo "__version__='${GITHUB_REF#refs/*/}'" >> spyder-remote-server/spyder-remote-server/__init__.py
+          
+          cd spyder-remote-server/spyder-remote-server
+          pwd
+          echo "# Copyright (c) Semi-ATE" > __init__.py
+          echo "# Distributed under the terms of the MIT License" >> __init__.py
+          echo "__version__='${GITHUB_REF#refs/*/}'" >> __init__.py
+          cd ../..
           cat spyder-remote-server/spyder-remote-server/__init__.py
 
       - name: Create spyder-remote-client package
