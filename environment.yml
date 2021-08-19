@@ -12,3 +12,6 @@ dependencies:
   - setuptools
   - twine
   - zeroconf
+  - myst-parser
+  - sphinx
+#   - sphinx_book_theme # not available on conda-forge
