@@ -20,7 +20,7 @@
 
 ![Server package](https://img.shields.io/badge/spyder--remote-server-black)
 [![Server on PyPI](https://img.shields.io/pypi/v/spyder-remote-server?color=blue&label=PyPI)](https://pypi.org/project/spyder-remote-server/)
-[![Server on Conda](https://img.shields.io/conda/vn/conda-forge/spyder-remote-server?color=blue&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote-client)
+[![Server on Conda](https://img.shields.io/conda/vn/conda-forge/spyder-remote-server?color=blue&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote-server)
 [![server feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-server-feedstock?label=feedstock)](https://github.com/conda-forge/spyder-remote-server-feedstock)
 ![Server Downloads PyPI](https://img.shields.io/pypi/dm/spyder-remote-server?color=g&label=PyPI%20Downloads)
 ![Server Downloads Conda](https://img.shields.io/conda/dn/conda-forge/spyder-remote-server?color=g&label=conda-forge%20Downloads)
