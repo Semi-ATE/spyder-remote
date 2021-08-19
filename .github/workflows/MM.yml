@@ -17,7 +17,23 @@ jobs:
           #environment-name: # optional
           # version of micromamba to use (default: 0.9.2). Use "latest" for bleeding edge.
           #micromamba-version: # optional, default is latest
-      - name: show
+      - name: Create package
         shell: bash -l {0}
         run: |
-          python -c "import numpy"
+          cd spyder-remote-client
+          python setup.py sdist 
+      - name: Check package
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          twine check dist/*
+      - name: Check manifest
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          check-manifest  
+      - name: Run tests
+        shell: bash -l {0}
+        run: |
+          cd spyder-remote-client
+          pytest tests/ --cov=spyder_remote_client
