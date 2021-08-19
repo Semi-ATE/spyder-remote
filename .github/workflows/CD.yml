@@ -10,20 +10,9 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Setup miniconda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          miniconda-version: "latest" 
-          python-version: "3.8"
-          channel-priority: "strict"
-          channels: "conda-forge"  
-          mamba-version: "*"
-          show-channel-urls: true 
-      - name: Setup dependencies
-        run: |
-          mamba install -n test --file requirements/build_test_deploy.txt -c conda-forge -y -q
-          
-#          pip install -r requirements/docs.txt
+      - name: Install mamba & environment
+        uses: mamba-org/provision-with-micromamba@v10
+
       - name: tag to version
         shell: bash -l {0}
         run: |
@@ -96,6 +85,7 @@ jobs:
         with:
           asset_paths: '["spyder-remote-server/dist/spyder-remote-server*"]'
 
+#          pip install -r requirements/docs.txt
 #       - name: Build Sphinx Site
 #         run: |
 #           sphinx-build docs docs/build/
