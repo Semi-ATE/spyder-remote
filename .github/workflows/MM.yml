@@ -20,5 +20,4 @@ jobs:
       - name: show
         shell: bash -l {0}
         run: |
-          mamba --version
-          mamba list
+          python -c "import numpy"
