@@ -102,6 +102,7 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD_CLIENT }}
+        shell: bash -l {0}
         run: |
           set | grep CONDA
           conda list
@@ -112,6 +113,7 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD_SERVER }}
+        shell: bash -l {0}
         run: |
           cd spyder-remote-server
           python -m twine upload dist/*
