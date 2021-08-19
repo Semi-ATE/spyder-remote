@@ -104,8 +104,6 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD_CLIENT }}
         shell: bash -l {0}
         run: |
-          set | grep CONDA
-          conda list
           cd spyder-remote-client
           python -m twine upload dist/*
 
