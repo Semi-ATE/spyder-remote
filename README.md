@@ -1,7 +1,23 @@
 # spyder-remote
 
-![Run tests](https://github.com/Semi-ATE/spyder-remote/workflows/Run%20tests/badge.svg?branch=master)
-![Build and Deploy Docs](https://github.com/Semi-ATE/spyder-remote/workflows/Build%20and%20Deploy%20Docs/badge.svg)
+[![GitHub](https://img.shields.io/github/license/Semi-ATE/spyder-remote?color=black)](https://github.com/Semi-ATE/spyder-remote/blob/main/LICENSE) 
+![Conda](https://img.shields.io/conda/pn/conda-forge/starz?color=black)
+![Supported Python versions](https://img.shields.io/badge/python-%3E%3D3.7-black)
+
+[![CI](https://github.com/Semi-ATE/spyder-remote/workflows/CI/badge.svg?branch=main)](https://github.com/Semi-ATE/spyder-remote/actions?query=workflow%3ACI)
+[![CD](https://github.com/Semi-ATE/spyder-remote/workflows/CD/badge.svg)](https://github.com/Semi-ATE/spyder-remote/actions?query=workflow%3ACD)
+
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Semi-ATE/spyder-remote?color=blue&label=GitHub&sort=semver)](https://github.com/Semi-ATE/spyder-remote/releases/latest)
+[![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Semi-ATE/spyder-remote/latest)](https://github.com/Semi-ATE/spyder-remote)
+[![PyPI](https://img.shields.io/pypi/v/spyder-remote?color=blue&label=PyPI)](https://pypi.org/project/spyder-remote-client/)
+[![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/spyder-remote?color=blue&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote)
+[![conda-forge feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-server-feedstock?label=feedstock)](https://github.com/conda-forge/spyder-remote-feedstock)
+
+![PyPI - Downloads](https://img.shields.io/pypi/dm/spyder-remote?color=g&label=PyPI%20downloads)
+![Conda](https://img.shields.io/conda/dn/conda-forge/spyder-remote?color=g&label=conda-forge%20downloads)
+
+[![GitHub issues](https://img.shields.io/github/issues/Semi-ATE/spyder-remote)](https://github.com/Semi-ATE/spyder-remote/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/Semi-ATE/spyder-remote)](https://github.com/Semi-ATE/spyder-remote/pulls)
 
 `spyder-remote` is a project to add the ability to spyder to recognize (over [zeroconf](https://github.com/jstasiak/python-zeroconf)) what machines are in the local network that can start a `spyder-kernel` to which `spyder` can then (automatically) connect.
 
