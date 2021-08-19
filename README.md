@@ -9,12 +9,15 @@
 
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Semi-ATE/spyder-remote?color=blue&label=GitHub&sort=semver)](https://github.com/Semi-ATE/spyder-remote/releases/latest)
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Semi-ATE/spyder-remote/latest)](https://github.com/Semi-ATE/spyder-remote)
-[![PyPI](https://img.shields.io/pypi/v/spyder-remote?color=blue&label=PyPI)](https://pypi.org/project/spyder-remote-client/)
-[![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/spyder-remote?color=blue&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote)
-[![conda-forge feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-server-feedstock?label=feedstock)](https://github.com/conda-forge/spyder-remote-feedstock)
+[![PyPI](https://img.shields.io/pypi/v/spyder-remote-client?color=blue&label=PyPI)](https://pypi.org/project/spyder-remote-client/)
+[![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/spyder-remote-client?color=blue&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote-client)
+[![client feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-client-feedstock?label=client%20feedstock)](https://github.com/conda-forge/spyder-remote-client-feedstock)
+[![server feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-server-feedstock?label=server%20feedstock)](https://github.com/conda-forge/spyder-remote-server-feedstock)
 
-![PyPI - Downloads](https://img.shields.io/pypi/dm/spyder-remote?color=g&label=PyPI%20downloads)
-![Conda](https://img.shields.io/conda/dn/conda-forge/spyder-remote?color=g&label=conda-forge%20downloads)
+![Client Downloads PyPI](https://img.shields.io/pypi/dm/spyder-remote-client?color=g&label=Client%20Downloads%20PyPI)
+![Client Downloads Conda](https://img.shields.io/conda/dn/conda-forge/spyder-remote-client?color=g&label=Client%20Downloads%20Conda)
+![Server Downloads PyPI](https://img.shields.io/pypi/dm/spyder-remote-server?color=g&label=Server%20Downloads%20PyPI)
+![Server Downloads Conda](https://img.shields.io/conda/dn/conda-forge/spyder-remote-server?color=g&label=Server%20Downloads%20Conda)
 
 [![GitHub issues](https://img.shields.io/github/issues/Semi-ATE/spyder-remote)](https://github.com/Semi-ATE/spyder-remote/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/Semi-ATE/spyder-remote)](https://github.com/Semi-ATE/spyder-remote/pulls)
