@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  spyder-remote-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Setup miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest" 
+          python-version: "3.8"
+          channel-priority: "strict"
+          channels: "conda-forge"  
+          mamba-version: "*"
+          show-channel-urls: true 
