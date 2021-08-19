@@ -25,18 +25,14 @@ jobs:
           pip install -r requirements/docs.txt
       - name: tag to version
         run: |
-          find .
-          cd spyder-remote-client
-          echo "# Copyright (c) Semi-ATE" > spyder-remote-client/__init__.py
-          echo "# Distributed under the terms of the MIT License" >> spyder-remote-client/__init__.py
-          echo "__version__='${GITHUB_REF#refs/*/}'" >> spyder-remote-client/__init__.py
-          cat spyder-remote-client/__init__.py
-          
-          cd ../spyder-remote-server
-          echo "# Copyright (c) Semi-ATE" > spyder-remote-server/__init__.py
-          echo "# Distributed under the terms of the MIT License" >> spyder-remote-server/__init__.py
-          echo "__version__='${GITHUB_REF#refs/*/}'" >> spyder-remote-server/__init__.py
-          cat spyder-remote-server/__init__.py
+          echo "# Copyright (c) Semi-ATE" > spyder-remote-client/spyder-remote-client/__init__.py
+          echo "# Distributed under the terms of the MIT License" >> spyder-remote-client/spyder-remote-client/__init__.py
+          echo "__version__='${GITHUB_REF#refs/*/}'" >> spyder-remote-client/spyder-remote-client/__init__.py
+          cat spyder-remote-client/spyder-remote-client/__init__.py
+          echo "# Copyright (c) Semi-ATE" > spyder-remote-server/spyder-remote-server/__init__.py
+          echo "# Distributed under the terms of the MIT License" >> spyder-remote-server/spyder-remote-server/__init__.py
+          echo "__version__='${GITHUB_REF#refs/*/}'" >> spyder-remote-server/spyder-remote-server/__init__.py
+          cat spyder-remote-server/spyder-remote-server/__init__.py
 
       - name: Create spyder-remote-client package
         shell: bash -l {0}
