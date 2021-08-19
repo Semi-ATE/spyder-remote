@@ -26,23 +26,20 @@ jobs:
       - name: tag to version
         shell: bash -l {0}
         run: |
-          pwd
-          cd spyder-remote-client/spyder-remote-client
-          pwd
-          ls -la
+          cd spyder-remote-client/spyder_remote_client
           echo "# Copyright (c) Semi-ATE" > __init__.py
           echo "# Distributed under the terms of the MIT License" >> __init__.py
           echo "__version__='${GITHUB_REF#refs/*/}'" >> __init__.py
           cd ../..
-          cat spyder-remote-client/spyder-remote-client/__init__.py
+          cat spyder-remote-client/spyder_remote_client/__init__.py
           
-          cd spyder-remote-server/spyder-remote-server
+          cd spyder-remote-server/spyder_remote_server
           pwd
           echo "# Copyright (c) Semi-ATE" > __init__.py
           echo "# Distributed under the terms of the MIT License" >> __init__.py
           echo "__version__='${GITHUB_REF#refs/*/}'" >> __init__.py
           cd ../..
-          cat spyder-remote-server/spyder-remote-server/__init__.py
+          cat spyder-remote-server/spyder_remote_server/__init__.py
 
       - name: Create spyder-remote-client package
         shell: bash -l {0}
