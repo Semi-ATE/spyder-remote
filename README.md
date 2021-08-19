@@ -4,23 +4,27 @@
 ![Conda](https://img.shields.io/conda/pn/conda-forge/starz?color=black)
 ![Supported Python versions](https://img.shields.io/badge/python-%3E%3D3.7-black)
 
-[![CI](https://github.com/Semi-ATE/spyder-remote/workflows/CI/badge.svg?branch=main)](https://github.com/Semi-ATE/spyder-remote/actions?query=workflow%3ACI)
-[![CD](https://github.com/Semi-ATE/spyder-remote/workflows/CD/badge.svg)](https://github.com/Semi-ATE/spyder-remote/actions?query=workflow%3ACD)
-
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Semi-ATE/spyder-remote?color=blue&label=GitHub&sort=semver)](https://github.com/Semi-ATE/spyder-remote/releases/latest)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Semi-ATE/spyder-remote?color=blue&label=GitHub)](https://github.com/Semi-ATE/spyder-remote/releases/latest)
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Semi-ATE/spyder-remote/latest)](https://github.com/Semi-ATE/spyder-remote)
-[![PyPI](https://img.shields.io/pypi/v/spyder-remote-client?color=blue&label=PyPI)](https://pypi.org/project/spyder-remote-client/)
-[![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/spyder-remote-client?color=blue&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote-client)
-[![client feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-client-feedstock?label=client%20feedstock)](https://github.com/conda-forge/spyder-remote-client-feedstock)
-[![server feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-server-feedstock?label=server%20feedstock)](https://github.com/conda-forge/spyder-remote-server-feedstock)
-
-![Client Downloads PyPI](https://img.shields.io/pypi/dm/spyder-remote-client?color=g&label=Client%20Downloads%20PyPI)
-![Client Downloads Conda](https://img.shields.io/conda/dn/conda-forge/spyder-remote-client?color=g&label=Client%20Downloads%20Conda)
-![Server Downloads PyPI](https://img.shields.io/pypi/dm/spyder-remote-server?color=g&label=Server%20Downloads%20PyPI)
-![Server Downloads Conda](https://img.shields.io/conda/dn/conda-forge/spyder-remote-server?color=g&label=Server%20Downloads%20Conda)
-
+[![CI](https://github.com/Semi-ATE/spyder-remote/workflows/CI/badge.svg)](https://github.com/Semi-ATE/spyder-remote/actions?query=workflow%3ACI)
+[![CD](https://github.com/Semi-ATE/spyder-remote/workflows/CD/badge.svg)](https://github.com/Semi-ATE/spyder-remote/actions?query=workflow%3ACD)
 [![GitHub issues](https://img.shields.io/github/issues/Semi-ATE/spyder-remote)](https://github.com/Semi-ATE/spyder-remote/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/Semi-ATE/spyder-remote)](https://github.com/Semi-ATE/spyder-remote/pulls)
+
+![Client package](https://img.shields.io/badge/Package-spyder--remote--client-black)
+[![Client on PyPI](https://img.shields.io/pypi/v/spyder-remote-client?color=blue&label=PyPI)](https://pypi.org/project/spyder-remote-client/)
+[![Client on Conda](https://img.shields.io/conda/vn/conda-forge/spyder-remote-client?color=blue&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote-client)
+[![client feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-client-feedstock?label=feedstock)](https://github.com/conda-forge/spyder-remote-client-feedstock)
+![Client Downloads PyPI](https://img.shields.io/pypi/dm/spyder-remote-client?color=g&label=PyPI%20Downloads)
+![Client Downloads Conda](https://img.shields.io/conda/dn/conda-forge/spyder-remote-client?color=g&label=conda-forge%20Downloads)
+
+![Server package](https://img.shields.io/badge/Package-spyder--remote--server-black)
+[![Server on PyPI](https://img.shields.io/pypi/v/spyder-remote-server?color=blue&label=PyPI)](https://pypi.org/project/spyder-remote-server/)
+[![Server on Conda](https://img.shields.io/conda/vn/conda-forge/spyder-remote-server?color=blue&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote-client)
+[![server feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-server-feedstock?label=feedstock)](https://github.com/conda-forge/spyder-remote-server-feedstock)
+![Server Downloads PyPI](https://img.shields.io/pypi/dm/spyder-remote-server?color=g&label=PyPI%20Downloads)
+![Server Downloads Conda](https://img.shields.io/conda/dn/conda-forge/spyder-remote-server?color=g&label=conda-forge%20Downloads)
+
 
 `spyder-remote` is a project to add the ability to spyder to recognize (over [zeroconf](https://github.com/jstasiak/python-zeroconf)) what machines are in the local network that can start a `spyder-kernel` to which `spyder` can then (automatically) connect.
 
