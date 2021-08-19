@@ -27,6 +27,9 @@ jobs:
         shell: bash -l {0}
         run: |
           pwd
+          cd spyder-remote-client
+          pwd
+          ls -laR
           echo "# Copyright (c) Semi-ATE" > spyder-remote-client/spyder-remote-client/__init__.py
           echo "# Distributed under the terms of the MIT License" >> spyder-remote-client/spyder-remote-client/__init__.py
           echo "__version__='${GITHUB_REF#refs/*/}'" >> spyder-remote-client/spyder-remote-client/__init__.py
