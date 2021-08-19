@@ -1,6 +1,6 @@
 # spyder-remote
 
-[![GitHub](https://img.shields.io/github/license/Semi-ATE/spyder-remote?color=black)](https://github.com/Semi-ATE/spyder-remote/blob/main/LICENSE) 
+[![GitHub](https://img.shields.io/github/license/Semi-ATE/spyder-remote?color=black)](https://github.com/Semi-ATE/spyder-remote/blob/master/LICENSE.txt) 
 ![Conda](https://img.shields.io/conda/pn/conda-forge/starz?color=black)
 ![Supported Python versions](https://img.shields.io/badge/python-%3E%3D3.7-black)
 
