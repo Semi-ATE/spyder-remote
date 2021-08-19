@@ -1,8 +1,8 @@
 # spyder-remote
 
 [![GitHub](https://img.shields.io/github/license/Semi-ATE/spyder-remote?color=black)](https://github.com/Semi-ATE/spyder-remote/blob/master/LICENSE.txt) 
-![Conda](https://img.shields.io/conda/pn/conda-forge/starz?color=black)
-![Supported Python versions](https://img.shields.io/badge/python-%3E%3D3.7-black)
+[![Conda](https://img.shields.io/conda/pn/conda-forge/starz?color=black)](https://www.lifewire.com/what-is-noarch-package-2193808)
+[![Supported Python versions](https://img.shields.io/badge/python-%3E%3D3.7-black)](https://www.python.org/downloads/)
 
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Semi-ATE/spyder-remote?color=blue&label=GitHub%20Release&sort=semver)
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Semi-ATE/spyder-remote/latest)](https://github.com/Semi-ATE/spyder-remote)
