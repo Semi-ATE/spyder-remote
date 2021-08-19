@@ -21,8 +21,8 @@ jobs:
           show-channel-urls: true 
       - name: Setup dependencies
         run: |
-          mamba install -n test --file requirements.txt -c conda-forge -y -q
-          pip install sphinx_book_theme
+          mamba install -n test --file requirements/build_test_deploy.txt -c conda-forge -y -q
+          pip install -r requirements/docs.txt
       - name: tag to version
         run: |
           find .
@@ -92,7 +92,17 @@ jobs:
         with:
           asset_paths: '["spyder-remote-server/dist/spyder-remote-server*"]'
 
-#documentation ?
+#       - name: Build Sphinx Site
+#         run: |
+#           sphinx-build docs docs/build/
+#           touch docs/build/.nojekyll
+#       - name: Deploy github pages
+#         uses: JamesIves/github-pages-deploy-action@3.5.9
+#         with:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           BASE_BRANCH: master
+#           BRANCH: gh-pages
+#           FOLDER: docs/build
 
 #      - name: Upload spyder-remote-client to PyPI
 #         env:
