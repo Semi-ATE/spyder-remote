@@ -1,7 +1,14 @@
-name: test
+nname: test
 channels:
   - conda-forge
+  - defaults
 dependencies:
-  - python=3.9
-  - numpy
-#  - setuptools
+  - check-manifest 
+  - netifaces
+  - psutil
+  - pytest
+  - pytest-cov
+  - python=3.8
+  - setuptools
+  - twine
+  - zeroconf
