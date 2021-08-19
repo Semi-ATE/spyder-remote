@@ -25,6 +25,7 @@ jobs:
           pip install -r requirements/docs.txt
       - name: tag to version
         run: |
+          pwd
           echo "# Copyright (c) Semi-ATE" > spyder-remote-client/spyder-remote-client/__init__.py
           echo "# Distributed under the terms of the MIT License" >> spyder-remote-client/spyder-remote-client/__init__.py
           echo "__version__='${GITHUB_REF#refs/*/}'" >> spyder-remote-client/spyder-remote-client/__init__.py
