@@ -8,12 +8,17 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Setup miniconda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          miniconda-version: "latest" 
-          python-version: "3.8"
-          channel-priority: "strict"
-          channels: "conda-forge"  
-          mamba-version: "*"
-          show-channel-urls: true 
+      - name: provision-with-micromamba
+        uses: mamba-org/provision-with-micromamba@v10
+        #with:
+          # the environment.yml file for the conda environment
+          #environment-file: # default is environment.yml
+          # the name of the conda environment (defaults to name from the environment.yml file)
+          #environment-name: # optional
+          # version of micromamba to use (default: 0.9.2). Use "latest" for bleeding edge.
+          #micromamba-version: # optional, default is latest
+      - name: show
+        shell: bash -l {0}
+        run: |
+          mamba --version
+          mamba list
