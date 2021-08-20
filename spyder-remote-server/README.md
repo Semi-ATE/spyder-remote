@@ -11,7 +11,7 @@
 [![Server on PyPI](https://img.shields.io/pypi/v/spyder-remote-server?color=blue&label=PyPI)](https://pypi.org/project/spyder-remote-server/)
 [![Server on Conda](https://img.shields.io/conda/vn/conda-forge/spyder-remote-server?color=blue&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote-server)
 [![server feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-server-feedstock?label=feedstock)](https://github.com/conda-forge/spyder-remote-server-feedstock)
-![PyPI - Server Downloads](https://img.shields.io/pypi/dm/spyder-remote-server?color=g&label=PyPi%20Downloads)
-![conda - Server Downloads](https://img.shields.io/conda/dn/conda-forge/spyder-remote-server?color=g&label=conda-forge%20Downloads)
+[![PyPI - Server Downloads](https://img.shields.io/pypi/dm/spyder-remote-server?color=g&label=PyPi%20Downloads)](https://pypi.org/project/spyder-remote-server/)
+[![conda - Server Downloads](https://img.shields.io/conda/dn/conda-forge/spyder-remote-server?color=g&label=conda-forge%20Downloads)](https://anaconda.org/conda-forge/spyder-remote-server)
 
 Spyder remote server to connect to Spyder kernels via zeroconf.
