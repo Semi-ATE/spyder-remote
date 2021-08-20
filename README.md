@@ -26,7 +26,7 @@
 ![conda - Server Downloads](https://img.shields.io/conda/dn/conda-forge/spyder-remote-server?color=g&label=conda-forge%20Downloads)
 
 
-`spyder-remote` is a project to add the ability to spyder to recognize (over [zeroconf](https://github.com/jstasiak/python-zeroconf)) what machines are in the local network that can start a `spyder-kernel` to which `spyder` can then automatically and remotely connect.
+`spyder-remote` is a project to add the ability to [spyder](https://www.spyder-ide.org/) to recognize (over [zeroconf](https://github.com/jstasiak/python-zeroconf)) what machines are in the local network that can start a `spyder-kernel` to which `spyder` can then automatically and remotely connect.
 
 Bundeled with this capability there is also the capability to manage conda environment on the remote host.
 
