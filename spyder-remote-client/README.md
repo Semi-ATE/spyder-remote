@@ -8,12 +8,12 @@
 [![CD](https://github.com/Semi-ATE/spyder-remote/workflows/CD/badge.svg)](https://github.com/Semi-ATE/spyder-remote/actions?query=workflow%3ACD)
 
 
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Semi-ATE/spyder-remote?color=blue&label=GitHub%20Release&sort=semver)](https://github.com/Semi-ATE/spyder-remote/releases)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Semi-ATE/spyder-remote?color=blue&label=GitHub&sort=semver)](https://github.com/Semi-ATE/spyder-remote/releases)
 [![Client Version on PyPI](https://img.shields.io/pypi/v/spyder-remote-client?color=blue&label=PyPI)](https://pypi.org/project/spyder-remote-client/)
 [![Client Version on Conda](https://img.shields.io/conda/vn/conda-forge/spyder-remote-client?color=blue&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote-client)
 [![client feedstock](https://img.shields.io/github/issues-pr/conda-forge/spyder-remote-client-feedstock?label=feedstock)](https://github.com/conda-forge/spyder-remote-client-feedstock)
-[![PyPI - Client Downloads](https://img.shields.io/pypi/dm/spyder-remote-client?color=g&label=PyPI%20Downloads)](https://pypi.org/project/spyder-remote-client/)
-[![conda - Client Downloads](https://img.shields.io/conda/dn/conda-forge/spyder-remote-client?color=g&label=conda-forge%20Downloads)](https://anaconda.org/conda-forge/spyder-remote-client)
+[![PyPI - Client Downloads](https://img.shields.io/pypi/dm/spyder-remote-client?color=g&label=PyPI)](https://pypi.org/project/spyder-remote-client/)
+[![conda - Client Downloads](https://img.shields.io/conda/dn/conda-forge/spyder-remote-client?color=g&label=conda-forge)](https://anaconda.org/conda-forge/spyder-remote-client)
 
 Spyder remote client to connect to Spyder kernels via zeroconf.
  
