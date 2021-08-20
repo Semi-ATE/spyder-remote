@@ -18,6 +18,7 @@ from qtpy.QtGui import QIcon
 from spyder.api.plugins import Plugins, SpyderPluginV2
 from spyder.api.translations import get_translation
 from spyder.api.plugin_registration.decorators import on_plugin_available
+from spyder.plugins.mainmenu.api import ApplicationMenus, ConsolesMenuSections
 
 from spyder_remote_client.spyder.container import SpyderRemoteContainer
 
@@ -40,7 +41,7 @@ class SpyderRemote(SpyderPluginV2):
     """
 
     NAME = "spyder_remote"
-    REQUIRES = [Plugins.IPythonConsole]
+    REQUIRES = [Plugins.MainMenu]
     CONTAINER_CLASS = SpyderRemoteContainer
     CONF_SECTION = NAME
 
@@ -73,11 +74,10 @@ class SpyderRemote(SpyderPluginV2):
         container.sig_connect_to_kernel.connect(lambda x: self.update_actions())
         self.close_all_kernels_action.setEnabled(False)
 
-    @on_plugin_available(plugin=Plugins.IPythonConsole)
-    def on_IPythonConsole_available(self):
-        main_consoles_menu = self.main.consoles_menu_actions
-        main_consoles_menu.insert(0, self.new_remote_client_action)
-        main_consoles_menu.insert(1, self.close_all_kernels_action)
+    @on_plugin_available(plugin=Plugins.MainMenu)
+    def on_MainMenu_available(self):
+        self.get_plugin(Plugins.MainMenu).add_item_to_application_menu(self.new_remote_client_action, menu_id=ApplicationMenus.Consoles, section=ConsolesMenuSections.New)
+        self.get_plugin(Plugins.MainMenu).add_item_to_application_menu(self.close_all_kernels_action, menu_id=ApplicationMenus.Consoles, section=ConsolesMenuSections.New)
 
     def on_close(self, cancellable=True):
         self.close_all_kernels()
