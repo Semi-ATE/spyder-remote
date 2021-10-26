@@ -226,4 +226,6 @@ class RemoteConsoleDialog(QDialog):
             for key, value in properties.items():
                 if key.startswith("conda_env_") and key.endswith("_yes"):
                     env_name = value.split("/")[-1]
-                    self.env_comvo.addItem(env_name, value)
+                    #Fix for issue #27 for the spyder-remote-server issue 
+                    prefix = '/home/'+properties["guest_account"]+'/'+env_name
+                    self.env_comvo.addItem(env_name, prefix)
